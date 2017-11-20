@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+=======
+
+const express = require("express");
+const bodyParser = require("body-parser");
+const path = require("path");
+const gcloud = require("google-cloud");
+>>>>>>> d0621f100e3270c2c3f876b9ea4ee48b4f762f11
 // const connection = require("./config/connection");
 
 const app = express();

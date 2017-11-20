@@ -1,0 +1,13 @@
+<h1>Exhibit</h1>
+
+<ul>
+  {{#each name}}
+  	<li>
+  		<p><span class="label">Title:</span> {{this.title}}</p>
+      	<p><span class="label">Description:</span> {{this.description}}</p>
+      	<p><span class="label">Medium:</span> {{this.medium}}</p>
+      	<p><span class="label">Created Date:</span> {{this.created_date}}</p>
+      	<p><span class="label">Image:</span> {{this.image}}</p>
+  	</li>
+  {{/each}}
+</ul>

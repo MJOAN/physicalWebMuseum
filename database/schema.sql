@@ -1,7 +1,7 @@
 
 CREATE DATABASE physicalweb_museum;
-USE physicalweb_museum;
 
+USE physicalweb_museum;
 
 CREATE TABLE exhibit
 (

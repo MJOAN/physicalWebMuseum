@@ -11,33 +11,14 @@
    limitations under the License.
 */
 
-var url = require('url');
+const url = require('url');
 
-module.exports = function(config) {
+module.exports = function(config) {  // this includes the config file w/credentials
 
-var gcloud = require('google-cloud');
-
-  var datastore = gcloud.datastore({
-    projectId: config.projectId,
-    keyFilename: config.keyFilename
-  });
-
-  function getAllImages(callback) {
-    var error = null;
-    var iamges = [
-      { id: 12345, title: '', desctiption: '', imageURL: '', createdByOrDate: '' }
-    ];
-    callback(error, images);
-  }
-
-  function getUserImage(id, callback) {
-    var query = datastore.createQuery(['images']).filter('userId', '=', userId);
-        datastore.runQuery(query, callback);
-    callback(new Error('image.getUserImage [Not Yet Implemented]'));
-  }
+const gcloud = require('google-cloud');
 
 
-  function addImage(id, title, description, imageURL, callback) {
+  function storeImage(name, title, description, imageURL, callback) {
       var entity = {
       key: datastore.key('Images'),
       data: {
@@ -45,19 +26,17 @@ var gcloud = require('google-cloud');
         description: description,
       }
     };
-  
     if (imageURL)
       return callback(new Error('image.addImage with image [Not Yet Implemented]'));
-
     return callback(new Error('image.addImage [Not Yet Implemented]'));
   }
 
-  function uploadCoverImage(coverImageData, callback) {
-    // Generate a unique filename for this image
-    var filename = '' + new Date().getTime() + "-" + Math.random();
+  function uploadImage(image, callback) {
+
     var file = bucket.file(filename);
     var imageURL = 'https://' + config.bucketName + '.storage.googleapis.com/' + filename;
     var stream = file.createWriteStream();
+    
     stream.on('error', callback);
 
     stream.on('finish', function() {
@@ -73,32 +52,8 @@ var gcloud = require('google-cloud');
   }
 
 
-  function deleteImage(id, callback) {
-     var key = datastore.key(['Images', parseInt(id, 10)]);
-
-      datastore.get(key, function(err, images) {
-        if (err) return callback(err);
-
-        if (images.data.imageURL) {
-
-          var filename = url.parse(book.data.imageUrl).path.replace('/', '');
-          var file = bucket.file(filename);
-          file.delete(function(err) {
-            if (err) return callback(err);
-            datastore.delete(key, callback);
-          });
-        } else {
-          datastore.delete(key, callback);
-        }
-      });
-    }
-    callback(new Error('image.deleteImage [Not Yet Implemented]'));
-  }
-
   return {
-    getAllImages: getAllImages,
-    getUserImage: getUserImage,
-    addImage: addImage,
-    deleteImage: deleteImage
+    storeImage: storeImage,
+    uploadImage: uploadImage,
   };
 };

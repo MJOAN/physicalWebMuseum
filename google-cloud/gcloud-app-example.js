@@ -25,10 +25,6 @@ const m = multer({
 // A bucket is a container for objects (files).
 const bucket = googleCloudStorage.bucket(process.env.GCLOUD_STORAGE_BUCKET);
 
-// Display a form for uploading files.
-app.get("/", (req, res) => {
-  res.sendFile(path.join(`${__dirname}/index.html`));
-});
 
 // Process the file upload and upload to Google Cloud Storage.
 app.post("/upload", m.single("file"), (req, res, next) => {

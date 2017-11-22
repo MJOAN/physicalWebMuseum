@@ -11,40 +11,67 @@
    limitations under the License.
 */
 
-/* Require shared configuration variables, eg. our Google Project ID */
-const config = require('./config');
+const process = require('process'); // Required to mock environment variables
+const format = require('util').format;
+const express = require('express');
+const bodyParser = require('body-parser');
+const fs = require('fs');
 
-/* Require "Images" service for querying, creating, and deleting Images */
+const Storage = require('@google-cloud/storage');
+
+const storage = Storage();
+const app = express();
+
+const PORT = process.env.PORT || 8080;
+
+const config = require('./config');
 const images = require('./images')(config);
 
-/* Require "auth" service for authenticating users and getting profile info */
-const auth = require('./auth')(config);
-
-/* Require Express web framework and Express middleware */
-const express = require('express');
-const multer = require('multer')
-const session = require('cookie-session');
-
-/* Configure Express web application */
-const app = express();
-app.use(express.static('public'));
-// app.set('view engine', 'jade');
 app.enable('trust proxy');
-app.use(multer({ inMemory: true }));
-app.use(session({ signed: true, secret: config.cookieSecret }));
+app.use(bodyParser.json());
+
+var gcs = Storage({
+  projectId: 'my-nodejs-codelab-186407',
+  keyFilename: './keyfile.json'
+});
+
+const bucket = gcs.bucket('physicalweb-one');
+
+// Upload a local file to a new file to be created in your bucket.
+bucket.upload('../images/starry.jpg', function(err, file) {
+  if (!err) {
+  }
+});
+
+var remoteReadStream = bucket.file('starry.jpg').createReadStream();
+var localWriteStream = fs.createWriteStream('../images/starry.jpg');
+remoteReadStream.pipe(localWriteStream);
 
 
-/* Fetch Images created by the currently logged in user and display them */
-app.get('/', function(req, res, next) {
-
-  if (! req.session.user) return res.redirect('/');
-  images.getUserImages(req.session.user.id, function(err, images) {
-    if (err) return next(err);
-    var keyImages = images.map((images) => Object.assign(images, { id: images.id || images[key].path[1] }));
-    res.render('index', { Images: keyImages, user: req.session.user });
-  });
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
 });
 
 
 
 
+
+
+/*var localReadStream = fs.createReadStream('/photos/zoo/zebra.jpg');
+var remoteWriteStream = bucket.file('starry.jpg').createWriteStream();
+localReadStream.pipe(remoteWriteStream);
+*/
+
+/*Fetch Images created by the currently logged in user and display them
+app.get('/', function(req, res, next) {
+  images.storeImage(function(err, images) {  
+    if (err) return next(err);
+    res.render('index', { images: image});
+  });
+}); */
+
+
+/*// Download a file from your bucket.
+bucket.file('starry-rhone.jpg').download({
+  destination: '/photos/starry.jpg'
+}, function(err) {});*/

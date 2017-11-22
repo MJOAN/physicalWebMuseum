@@ -1,11 +1,11 @@
 {
-  "name": "cloud-nodejs",
+  "name": "cloud-node-physicalwebimages",
   "version": "0.0.1",
   "description": "node.js: Build a Web App using Google Cloud Platform",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/googlesamples/io2015-codelabs"
+    "url": "git+https://github.com/googlesamples/io2015-codelabs.git"
   },
   "main": "app.js",
   "scripts": {
@@ -13,10 +13,29 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@google-cloud/storage": "^1.4.0",
+    "body-parser": "^1.18.2",
     "cookie-session": "^1.1.0",
-    "express": "^4.12.3",
+    "express": "^4.16.2",
+    "format": "^0.2.2",
+    "fs": "0.0.1-security",
     "google-cloud": "^0.48.0",
-    "jade": "^1.9.2",
-    "multer": "^0.1.8"
-  }
+    "multer": "^0.1.8",
+    "url": "^0.11.0",
+    "util": "^0.10.3"
+  },
+  "bugs": {
+    "url": "https://github.com/googlesamples/io2015-codelabs/issues"
+  },
+  "homepage": "https://github.com/googlesamples/io2015-codelabs#readme",
+  "devDependencies": {},
+  "keywords": [
+    "physicalweb",
+    "images",
+    "google",
+    "cloud",
+    "node",
+    "project"
+  ],
+  "author": "MJOAN"
 }

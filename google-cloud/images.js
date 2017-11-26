@@ -10,7 +10,6 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-
 const url = require('url');
 
 module.exports = function(config) {  // this includes the config file w/credentials
@@ -20,7 +19,7 @@ const gcloud = require('google-cloud');
 
   function storeImage(name, title, description, imageURL, callback) {
       var entity = {
-      key: datastore.key('Images'),
+      key: datastore.key('images'),
       data: {
         title: title,
         description: description,
@@ -33,25 +32,20 @@ const gcloud = require('google-cloud');
 
   function uploadImage(image, callback) {
 
-    var file = bucket.file(filename);
-    var imageURL = 'https://' + config.bucketName + '.storage.googleapis.com/' + filename;
+    var file = bucket.file(starry.jpg);
+    var imageURL = 'https://' + config.bucketName + '.storage.googleapis.com/' + starry.jpg;
     var stream = file.createWriteStream();
-    
-    stream.on('error', callback);
 
+    stream.on('error', callback);
     stream.on('finish', function() {
-      // Set this file to be publicly readable
       file.makePublic(function(err) {
 
         if (err) return callback(err);
         callback(null, imageUrl);
       });
     });
-
     stream.end(coverImageData);
   }
-
-
   return {
     storeImage: storeImage,
     uploadImage: uploadImage,

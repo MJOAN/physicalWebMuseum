@@ -2,17 +2,40 @@
 module.exports = function(app) {
 
 
-  app.get("/:name", function(req, res) {   
-  connection.query("SELECT * FROM exhibit (name) VALUES (?)", [req.body.name], function(error, result) {
-    if (error) {
-      return res.status(500).end();
+// for ONE artist OR display ALL
+
+  app.get("/:name?", function(req, res) {
+
+    if (req.params.name) {
+
+      // display the JSON for ONLY that name
+      Exhibit.findOne({
+        where: {
+          routeName: req.params.name
+        }
+      }).then(function(result) {
+        return res.json(result);
+      });
     }
 
-    res.render("index", { name: result, title: result, description: result, created_date: result, image: result });
-  });
-});
+    else {
 
- 
+      Exhibit.findAll({})
+        .then(function(result) {
+          return res.json(result);
+        });
+    }
+
+  });
+
+
+// for display ALL 
+
+  app.get("/all", function(req, res) {
+    Exhibit.findAll({}).then(function(results) {
+      res.json(results);
+    });
+  });
 
 
 };

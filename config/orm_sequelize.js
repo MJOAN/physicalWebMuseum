@@ -1,10 +1,10 @@
 
-var connection = require("./config/connection.js");
-var exhibit = "exhibit";
+var connection = require("../config/connection.js");
 
-var orm = {
 
-  allNames: function(callback) {
+var orm_sequelize = {
+
+/*  allNames: function(callback) {
     var s = "SELECT * FROM " + exhibit;
 
     connection.query(s, function(err, result) {
@@ -19,7 +19,7 @@ var orm = {
       callback(result);
     });
   },
-
+*/
 };
 
-module.exports = orm;
+module.exports = orm_sequelize;

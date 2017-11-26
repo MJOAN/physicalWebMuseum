@@ -1,0 +1,30 @@
+{
+  "name": "physicalwebmuseum",
+  "version": "1.0.0",
+  "description": "physical web project 2",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexEBall/physicalWebMuseum.git"
+  },
+  "author": "BEACON",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexEBall/physicalWebMuseum/issues"
+  },
+  "homepage": "https://github.com/AlexEBall/physicalWebMuseum#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cloud-node-physicalwebimages": "file:google-cloud",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.1",
+    "path": "^0.12.7",
+    "sequelize": "^4.23.0"
+  }
+}

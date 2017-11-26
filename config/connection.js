@@ -1,7 +1,7 @@
 
 var Sequelize = require("sequelize");
 
-var sequelize = new Sequelize("physicalweb_museum", "root", "password", {
+var sequelize = new Sequelize("physicalweb_museum", "root", "", {
   host: "localhost",
   dialect: "mysql",
   pool: {

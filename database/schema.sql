@@ -11,6 +11,6 @@ CREATE TABLE exhibit
 	description varchar(255) NOT NULL,
 	medium varchar(255) NOT NULL,
 	created_date TIMESTAMP NOT NULL,
-	iamge LONGBLOB NOT NULL,
+	image LONGBLOB NOT NULL,
 	PRIMARY KEY (id)
 );

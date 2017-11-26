@@ -20,6 +20,7 @@ var orm_sequelize = {
     });
   },
 */
+
 };
 
 module.exports = orm_sequelize;

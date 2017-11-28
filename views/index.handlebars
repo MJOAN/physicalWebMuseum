@@ -1,14 +1,30 @@
-<h1>Exhibit</h1>
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+    <img src="images/Parthenon-128.png" width="30" height="30" class="d-inline-block align-top" alt=""> The {{name}} Exhibit
+    </a>
+</nav>
 
-<ul>
-  {{#each exhibit}}
-  	<li>
-  		  <p><span class="label">Name:</span> {{this.name}}</p>
-  		  <p><span class="label">Title:</span> {{this.title}}</p>
-      	<p><span class="label">Description:</span> {{this.description}}</p>
-      	<p><span class="label">Medium:</span> {{this.medium}}</p>
-      	<p><span class="label">Created Date:</span> {{this.created_date}}</p>
-      	<p><span class="label">Image:</span> {{this.image}}</p>
-  	</li>
-  {{/each}}
-</ul>
+<h1 class="text-center">{{title}}</h1>
+
+<div class="row">
+    <div class="col-sm-12 text-center">
+        <img id="centerImg" src="{{img}}" />
+    </div>
+</div>
+<h3 class="text-center">Tweets from NHMLA</h3>
+<div class="row">
+  <div class="col-sm-6 mx-auto card" id="twitterSpace">
+    
+  </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 mx-auto mt-2 card" id="instafeed">
+        
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <p>Created on {{created}} with {{medium}}</p>
+        <p>{{desc}}</p>
+    </div>
+</div>

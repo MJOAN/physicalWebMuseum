@@ -1,0 +1,29 @@
+html, body {
+	box-sizing: border-box;
+	/*overflow: hidden;*/
+}
+p {
+	padding: 0 2rem;
+}
+#profileImg {
+	float: left;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+}
+.card {
+	background-color: lightgreen;
+	border-radius: 2em;
+	margin: 1em;
+}
+.navbar {
+	overflow: hidden;
+}
+.video {
+	height: 250px;
+	width: 280px;
+}
+#centerImg {
+	width: 300px;
+	height: 200px;
+}

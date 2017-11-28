@@ -19,7 +19,6 @@
   "homepage": "https://github.com/AlexEBall/physicalWebMuseum#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "cloud-node-physicalwebimages": "file:google-cloud",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
     "mysql": "^2.15.0",

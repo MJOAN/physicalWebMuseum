@@ -1,6 +1,6 @@
 
-var Sequelize = require("sequelize");
-var sequelize = require("../config/connection.js");
+const Sequelize = require("sequelize");
+const sequelize = require("../config/connection.js");
 
 
 var Exhibit = sequelize.define("exhibit", {
@@ -28,5 +28,7 @@ var Exhibit = sequelize.define("exhibit", {
 
 Exhibit.sync();
 
-module.exports = Exhibit;
+module.exports = {
+  table1: Exhibit
+}
 

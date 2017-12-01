@@ -6,6 +6,7 @@ const path = require("path");
 const app = express();
 const exphbs = require("express-handlebars");
 const routes = require("./controllers/controller.js");
+const db = require("./models");
 
 // Variable Port
 //======================================
@@ -30,9 +31,12 @@ app.use("/", routes);
 
 //Lisening to the PORT
 //======================================
+db.sequelize.sync().then(function(){
 app.listen(PORT, function() {
   console.log("Listening on PORT: " + PORT);
 });
+});
+
 
 
 

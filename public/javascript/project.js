@@ -1,37 +1,45 @@
-// function getTweets() {
+$(document).ready(function() {
 
-//     // console.log("hit");
+$("#chat-submit").on("click", function(event) {
+  event.preventDefault();
 
-//     var currentURL = window.location.origin;
+  var chat = {
+    chat: $("#chat-box").val().trim(),
+    created_at: moment().format("YYYY-MM-DD HH:mm:ss")
+  };
 
-//     $.ajax({ url: currentURL + "/api/tweets", method: "GET" })
-//         .done(function(tweets) {
+  console.log(chat);
 
-//             // console.log(tweets);
+  // Send an AJAX POST-request 
+  $.post("/abbotkinney", chat)
+    .done(function() {
 
-//             // Loop through and display each of the tweets
-//             // for (var i = 0; i < tweets.length; i++) {
+      var row = $("<div>");
+      row.addClass("chat");
 
-//                 // Create the HTML (Section) and Add the tweet content for each tweet
-//                 var tweetHouse = $("<div>");
-//                 tweetHouse.addClass('card-block');
-//                 tweetHouse.append("<h4 class='card-title'>@" + tweets.twitterHandle + "</h4>");
-//                 var profilePhoto = $("<img>");
-//                 profilePhoto.attr('id', 'profileImg');
-//                 profilePhoto.attr('src', tweets.image);
-//                 tweetHouse.append(profilePhoto);
-//                 var textField = $("<p>");
-//                 textField.text(tweets.actualText);
-//                 // tweetHouse.append("<p>" + tweets[i].actualText + "<p>");
-//                 tweetHouse.append(textField);
+      row.append("<p>" + chat.created_at + "</p>");
+      row.append("<p>At " + moment(chat.created_at).format("h:mma on dddd") + "</p>");
 
-//                 $('#twitterSpace').append(tweetHouse);
+      $("#chat-area").prepend(row);
 
-//         });
-// }
+    });
+});
 
-// $(document).ready(function() {
-// // Run Queries!
-// // ==========================================
-// getTweets();
-// });
+$.get("/abbotkinney", function(data) {
+
+  if (data.length !== 0) {
+    for (var i = 0; i < data.length; i++) {
+
+      var row = $("<div>");
+      row.addClass("chat");
+
+      row.append("<p>" + data[i].body + "</p>");
+      row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd") + "</p>");
+
+      $("#chat-area").prepend(row);
+
+    	}
+  	}
+});
+
+});

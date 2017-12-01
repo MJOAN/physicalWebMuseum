@@ -8,6 +8,7 @@ const exphbs = require("express-handlebars");
 const routes = require("./controllers/controller.js");
 const db = require("./models");
 
+
 // Variable Port
 //======================================
 const PORT = process.env.PORT || 8080;
@@ -28,6 +29,8 @@ app.set("view engine", "handlebars");
 // Routing
 //======================================
 app.use("/", routes);
+
+// requiere("./controllers/controller.js")(app);
 
 //Lisening to the PORT
 //======================================

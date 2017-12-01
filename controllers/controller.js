@@ -9,28 +9,31 @@ const router = express.Router();
 // var res.locals.metaTags;/
 // var meta;
 
-router.get("/", function(req, res) {
+// module.exports = function() {
 
-    db.livingWorld.findAll({})
-        .then(function(result) {
+    router.get("/", function(req, res) {
 
-            // console.log(result[0].dataValues);
+        db.livingWorld.findAll({})
+            .then(function(result) {
 
-            var hbsObject = {
-                name: result[0].dataValues.name,
-                title: result[0].dataValues.title,
-                desc: result[0].dataValues.description,
-                img: result[0].dataValues.imgURL,
-                medium: result[0].dataValues.medium,
-                created: result[0].dataValues.created_date,
-                beaconID: result[0].dataValues.beaconID
+                // console.log(result[0].dataValues);
 
-            };
+                var hbsObject = {
+                    name: result[0].dataValues.name,
+                    title: result[0].dataValues.title,
+                    desc: result[0].dataValues.description,
+                    img: result[0].dataValues.imgURL,
+                    medium: result[0].dataValues.medium,
+                    created: result[0].dataValues.created_date,
+                    beaconID: result[0].dataValues.beaconID
 
-            res.render("index", hbsObject);
+                };
 
-        });
+                res.render("index", hbsObject);
 
-});
+            });
+
+    });
+// }
 
 module.exports = router;

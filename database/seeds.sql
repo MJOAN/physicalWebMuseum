@@ -24,3 +24,9 @@ VALUES ('3', '3', "Starry Night Over the Rhône is one of Vincent van Gogh paint
 
 INSERT INTO feedback (artwork id, created_date, feedback) 
 VALUES ('1', '1', 'Great work!');
+
+
+INSERT INTO artworks (title, description, created_date, medium, feedback, imgURL, beaconID 
+SELECT artist_id FROM artists WHERE artist_id=1 
+('The Mural', 'When Google asked local artists to submit ideas for a Venice Beach themed mural, Patrick Marston, a Venice artist, eagerly took on the challenge.  Patrick wondered what it was like for one to have dreams become reality over a hundred years ago when the telephone, radio, airplane, typewriter and even the basketball were just being invented.  This mural, Abbot’s Dream, depicts Abbot Kinney floating in a metaphorical gondola. Intermingled with the many inventions of his time, visions of early Venice and the symbols of what Venice Beach would come to mean through the years create a tapestry of past and present quintessential Venice', 
+'2017-12-01', 'oil', 'beautiful work!', 'images/starry-rhone.jpg', 'beacon2');

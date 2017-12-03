@@ -16,6 +16,7 @@ module.exports = function(sequelize, DataTypes) {
             len: [1]
         }
     }
+  });
 
   Artist.associate = function(models) {
 
@@ -25,6 +26,9 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
   };
+
   return Artist;
 };
+
+
 

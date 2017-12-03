@@ -63,12 +63,9 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
             len: [1]
       }
-    }, {
+    }, 
         timestamps: false
     });
-
-// artwork belongsTo(artist)
-// artwork hasMany(feedback)
 
   Artwork.associate = function(models) {
     
@@ -77,10 +74,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-  };
 
-  Artwork.associate = function(models) {
-    
     Artwork.hasMany(models.Feedback, {
       foreignKey: {
         allowNull: false
@@ -89,4 +83,5 @@ module.exports = function(sequelize, DataTypes) {
   };
 
   return Artwork;
+
 };

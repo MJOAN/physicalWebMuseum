@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
 
   Feedback.associate = function(models) {
     console.log(models); // check to see what is?
-    // feedback post can't be created without an artworkid due to the foreign key constraint
+    // feedback post can't be created without an artworkid due to foreign key constraint
     Feedback.belongsTo(models.Artwork, {
       foreignKey: {
         allowNull: false

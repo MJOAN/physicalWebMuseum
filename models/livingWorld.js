@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var livingWorld = sequelize.define("livingWorld", {
+    var LivingWorld = sequelize.define("LivingWorld", {
         name: { // Artist Name 
             type: DataTypes.STRING,
             allowNull: false,
@@ -35,6 +35,13 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1]
             }
         },
+        feedback: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
         imgURL: {
             type: DataTypes.BLOB,
             allowNull: false,
@@ -52,5 +59,18 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         timestamps: false
     });
-    return livingWorld;
+
+    LivingWorld.associate = function(models) {
+        LivingWorld.hasOne(models.Feedback, {
+           through: "feedback"
+    });
+  };
+    return LivingWorld;
 };
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var AbbotKinney = sequelize.define("abbotKinney", {
+    var AbbotKinney = sequelize.define("AbbotKinney", {
         name: { // Artist Name 
             type: DataTypes.STRING,
             allowNull: false,
@@ -59,5 +59,13 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         timestamps: false
     });
+
+    AbbotKinney.associate = function(models) {
+  
+        AbbotKinney.hasOne(models.Feedback, {
+            through: "feedback"
+        });
+  };
+
     return AbbotKinney;
 };

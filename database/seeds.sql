@@ -1,24 +1,26 @@
-INSERT INTO abbotkinneys (name, title, description, created_date, medium, feedback, imgURL, beaconID) 
-VALUES ('Van Gogh', 'Starry Night Over the Rhône', "Starry Night Over the Rhône is one of Vincent van Gogh paintings of Arles at nighttime. It was painted at a spot on the bank of the Rhône that was only a one or two-minute walk from the Yellow House on the Place Lamartine which Van Gogh was renting at the time. The night sky and the effects of light at night provided the subject for some of his more famous paintings, including Cafe Terrace at Night (painted earlier the same month) and the later canvas from Saint-Rémy, The Starry Night.
-A sketch of the painting is included in a letter van Gogh sent to his friend Eugène Boch on October 2 1888. Starry Night Over the Rhône, which is now in the Musée d Orsay in Paris, was first exhibited in 1889 at Paris annual exhibition of the Société des Artistes Indépendants. It was shown together with van Gogh Irises, which was added by Vincent brother, Theo.",
-'1888-09-01', 
-"oil",
-"hello",
-"images/starry-rhone.jpg",
-"3!eeedededdeddedddedddeddddeddedee");
+INSERT INTO artists (artist id, name) 
+VALUES ('1', 'Abbot Kinney');
+
+INSERT INTO artists (artist id, name) 
+VALUES ('2', 'Patrick Marston');
 
 
--- For reference, the table from schema.sql
---   id int NOT NULL AUTO_INCREMENT,
---     name varchar(255) NOT NULL,
---     title VARCHAR(100) NOT NULL,
---     description TEXT NOT NULL,
---     created_date VARCHAR (255) NOT NULL,
---     medium VARCHAR(20) NOT NULL,
---     imgURL VARCHAR(1000) NOT NULL,
---     beaconID varchar(1000) NOT NULL,
---     PRIMARY KEY (id)
--- );
+INSERT INTO artists (artist id, name) 
+VALUES ('2', 'Van Gogh');
 
--- INSERT INTO exhibits (name, title, description, created_date, medium, imgURL) VALUES ('Rembrandt', 'Self-Portrait with Beret and Turned-Up Collar', "In Self-Portrait with Beret and Turned-Up Collar Rembrandt is seated in a broadly painted fur cloak, his hands clasped in his lap. Light from the upper right fully illuminates the face, hollowing the form of the cheek, and allowing for the representation of blemishes on the right cheek and ear lobe. The picture is painted in a restrained range of browns and grays, enriched by a red shape that probably indicates the back of his chair, while another red area at the lower left corner of the canvas may be a tablecloth. The most luminous area, the artist's face, is framed by a large beret and the high collar that flatteringly hides his jowls. The skin of the face is modeled with thick, tactile pigment, painted with rich and varied colors suggesting both the artist's physical aging and the emotional effects of life experience.
--- At first Rembrandt painted himself wearing a light colored cap before opting for the black beret; since the original headdress was of a type that the artist included only in self-portraits where he is seen at the easel, it is possible that he initially intended for this painting to refer directly to his trade.", '1659', "oil on canvas", "https://upload.wikimedia.org/wikipedia/commons/b/bd/Rembrandt_van_Rijn_-_Self-Portrait_-_Google_Art_Project.jpg");
+
+INSERT INTO artworks (artist id, artwork id, title, description, created_date, medium, feedback, imgURL, beaconID) 
+VALUES ('1', '1', 'The Mural', 'When Google asked local artists to submit ideas for a Venice Beach themed mural, Patrick Marston, a Venice artist, eagerly took on the challenge.  Patrick wondered what it was like for one to have dreams become reality over a hundred years ago when the telephone, radio, airplane, typewriter and even the basketball were just being invented.  This mural, Abbot’s Dream, depicts Abbot Kinney floating in a metaphorical gondola. Intermingled with the many inventions of his time, visions of early Venice and the symbols of what Venice Beach would come to mean through the years create a tapestry of past and present quintessential Venice', 
+	'2017-12-01', 'oil', 'beautiful work!', 'images/starry-rhone.jpg', 'beacon2');
+
+INSERT INTO artworks (artist id, artwork id, title, description, created_date, medium, feedback, imgURL, beaconID) 
+VALUES ('2', '2', 'Abbot’s Dream', 'In 1898, a coin toss would change the course of Abbot Kinney and what became known as the Venice of America. At 16 years old, Abott Kinney went on a walking tour of Venice and the Italian Riviera, leaving a significant lasting impression. In 1880 Kinney came to San Francisco and purchased land nearby and named it Kinneloa. In 1886, he built a summer home for he and his wife in Santa Monica. Kinney partnered with Francis Ryan and bought controlling interest in the Pacific Ocean Casino and a tract of land 1.5 miles long.  They built a pier, golf course, horse-racing track, boardwalk and other resort amenities.  Later Ryan died and his widow sold their half of interest to another group of men. With a flip of a coin, Kinney won the marshy southern half to build his “Venice of America.” Kinney’s dream was to cater to the beach-goers and summer holiday guests who frequented the communitys many amusement attractions. Venice came to be known as the Coney Island of the Pacific. Visitors were dazzled by the system of canals complete with gondolas and gondoliers brought in from Venice, Italy. There were ornate Venetian-style businesses and a full-sized amusement pier, and a miniature steam railroad ran on a 21⁄2-miles of tracks around the entire park. Eventually in 1911, Kinney changed the city’s name from Ocean Park to Venice', 
+	'1888-09-01', 'oil', 'amazing work!', 'images/starry-rhone.jpg', 'beacon3');
+
+
+INSERT INTO artworks (artist id, artwork id, title, description, created_date, medium, feedback, imgURL, beaconID) 
+VALUES ('3', '3', "Starry Night Over the Rhône is one of Vincent van Gogh paintings of Arles at nighttime. It was painted at a spot on the bank of the Rhône that was only a one or two-minute walk from the Yellow House on the Place Lamartine which Van Gogh was renting at the time. The night sky and the effects of light at night provided the subject for some of his more famous paintings, including Cafe Terrace at Night (painted earlier the same month) and the later canvas from Saint-Rémy, The Starry Night. A sketch of the painting is included in a letter van Gogh sent to his friend Eugène Boch on October 2 1888. Starry Night Over the Rhône, which is now in the Musée d Orsay in Paris, was first exhibited in 1889 at Paris annual exhibition of the Société des Artistes Indépendants. It was shown together with van Gogh Irises, which was added by Vincent brother, Theo.", 
+	'1888-09-01', "oil", "Hi! I'd love to buy an artwork!", "images/starry-rhone.jpg", "3!eeedededdeddedddedddeddddeddedee");
+
+INSERT INTO feedback (artwork id, created_date, feedback) 
+VALUES ('1', '1', 'Great work!');

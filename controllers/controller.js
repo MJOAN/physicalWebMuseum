@@ -9,14 +9,13 @@ const router = express.Router();
 // var res.locals.metaTags;/
 // var meta;
 
-// module.exports = function() {
 
 router.get("/livingworld", function(req, res) {
 
-    db.livingWorld.findAll({})
+    db.LivingWorld.findAll({})
         .then(function(result) {
 
-            // console.log(result[0].dataValues);
+            console.log(result);
 
             var hbsObject = {
                 name: result[0].dataValues.name,
@@ -27,18 +26,15 @@ router.get("/livingworld", function(req, res) {
                 feedback: result[0].dataValues.feedback,
                 created: result[0].dataValues.created_date,
                 beaconID: result[0].dataValues.beaconID
-
             };
-
             res.render("index", hbsObject);
-
         });
+    });
 
-});
 
 router.get("/abbotkinney", function(req, res) {
 
-    db.abbotKinney.findAll({})
+    db.AbbotKinney.findAll({})
         .then(function(result) {
 
             console.log(result);
@@ -61,12 +57,12 @@ router.get("/abbotkinney", function(req, res) {
 
 router.post("/livingworld", function(req, res) {
 
-    console.log("Chat:");
+    console.log("Feedback:");
     console.log(req.body);
 
-    db.livingWorld.create({
-        feedback: req.body.body.feedback,
-        created_at: req.body.created_at
+    db.LivingWorld.create({
+        feedback: req.body.body.feedback
+        // created_at: req.body.created_at
     }).then(function(results) {
         // `results` here would be the newly created chat
         res.end();
@@ -75,20 +71,19 @@ router.post("/livingworld", function(req, res) {
 
 router.post("/abbotkinney", function(req, res) {
 
-    console.log("Chat:");
+    console.log("Feedback:");
     console.log(req.body);
 
-    db.Abbotkinney.create({
-        feedback: req.body.body.feedback,
-        created_at: req.body.created_at
+    db.AbbotKinney.create({
+        feedback: req.body.feedback
+        // created_at: req.body.created_at
     }).then(function(results) {
-        // `results` here would be the newly created chat
-        res.end();
+        // `results` here would be the newly created 
+        console.log(results);
+        res.json(results);
+        // res.end();
     });
 });
 
-
-
-// }
 
 module.exports = router;

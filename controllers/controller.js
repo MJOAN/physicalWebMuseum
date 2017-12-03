@@ -1,18 +1,12 @@
-// const client = require('../config/keys.js');
+
 const express = require("express");
 const db = require("../models");
 const router = express.Router();
-
-// const Exhibit = require("../models/exhibit.js");
-
-// const client = require('../../config/keys.js');
 // var res.locals.metaTags;/
-// var meta;
-
 
 router.get("/livingworld", function(req, res) {
 
-    db.LivingWorld.findAll({})
+    db.Artwork.findAll({})   // find all where artwork ID === 
         .then(function(result) {
 
             console.log(result);
@@ -34,7 +28,7 @@ router.get("/livingworld", function(req, res) {
 
 router.get("/abbotkinney", function(req, res) {
 
-    db.AbbotKinney.findAll({})
+    db.AbbotKinney.findAll({})   // find all where artwork ID === 
         .then(function(result) {
 
             console.log(result);

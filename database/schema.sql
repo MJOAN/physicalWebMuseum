@@ -13,7 +13,6 @@ CREATE TABLE artists
     name varchar(255) NOT NULL,
 );
 
-
 CREATE TABLE artworks
 (
     artwork_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,

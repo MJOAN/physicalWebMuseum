@@ -66,7 +66,7 @@ router.get("/abbotkinney", function(req, res) {
             console.log(result);
 
             var hbsObject = {
-                name: result[0].dataValues.name,
+                artist_id: result[0].dataValues.artist_id,
                 title: result[0].dataValues.title,
                 desc: result[0].dataValues.description,
                 img: result[0].dataValues.imgURL,
@@ -88,7 +88,7 @@ router.get("/abbotkinney", function(req, res) {
         .then(function(result) {
 
             var hbsObject = {
-                name: result[0].dataValues.name,
+                artist_id: result[0].dataValues.artist_id,
                 title: result[0].dataValues.title,
                 desc: result[0].dataValues.description,
                 img: result[0].dataValues.imgURL,

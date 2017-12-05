@@ -29,14 +29,21 @@ module.exports = function(sequelize, DataTypes) {
             len: [1]
         }
     },
-    feedback: {
-        type: DataTypes.TEXT,
+    imgURL: {
+        type: DataTypes.BLOB,
         allowNull: false,
         validate: {
             len: [1]
         }
     },
-    imgURL: {
+    videoURL: {
+        type: DataTypes.BLOB,
+        allowNull: false,
+        validate: {
+            len: [1]
+        }
+    },
+    audioURL: {
         type: DataTypes.BLOB,
         allowNull: false,
         validate: {

@@ -16,8 +16,9 @@ router.get("/artwork/:title", function(req, res) {
                 title: result[0].dataValues.title,
                 desc: result[0].dataValues.description,
                 img: result[0].dataValues.imgURL,
+                video: result[0].dataValues.videoURL,
+                audio: result[0].dataValues.audioURL,
                 medium: result[0].dataValues.medium,
-                feedback: result[0].dataValues.feedback,
                 created: result[0].dataValues.created_date,
                 beaconID: result[0].dataValues.beaconID
             };

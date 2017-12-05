@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
+
 app.use(express.static("public"));
 
 // Creating the Handlebars View Engine
@@ -30,16 +31,13 @@ app.set("view engine", "handlebars");
 //======================================
 app.use("/", routes);
 
-// requiere("./controllers/controller.js")(app);
-
 //Lisening to the PORT
 //======================================
 db.sequelize.sync().then(function(){
 app.listen(PORT, function() {
   console.log("Listening on PORT: " + PORT);
+	});
 });
-});
-
 
 
 

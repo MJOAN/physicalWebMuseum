@@ -48,12 +48,6 @@ box-shadow: 2px 2px 4px 0px #006773;
 border-radius:7px 7px 7px 7px ;
 }
 
-.cool-font {
-  font-family: Shrikhand, cursive;
-  font-size: 10px;
-  color: #1da1f2;
-}
-
 input,
 textarea {
   margin: 10px;
@@ -69,6 +63,6 @@ textarea {
 }
 
 p {
-  margin: 0;
+  margin: 10px;
   font-size: 10px;
 }

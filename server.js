@@ -31,16 +31,13 @@ app.set("view engine", "handlebars");
 //======================================
 app.use("/", routes);
 
-// requiere("./controllers/controller.js")(app);
-
 //Lisening to the PORT
 //======================================
 db.sequelize.sync().then(function(){
 app.listen(PORT, function() {
   console.log("Listening on PORT: " + PORT);
+	});
 });
-});
-
 
 
 

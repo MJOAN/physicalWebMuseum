@@ -1,20 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Artwork = sequelize.define("Artwork", {
 
-    artist_id: {  
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-            len: [1]
-        }
-    },
-   artwork_id: { 
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-            len: [1]
-        }
-    },
     title: { 
         type: DataTypes.STRING,
         allowNull: false,
@@ -34,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         validate: {
             len: [4]
-        } // vTo Do: create validation to only allow one date format
+        } 
     },
     medium: {
         type: DataTypes.STRING,
@@ -63,7 +49,8 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
             len: [1]
       }
-    }, 
+    }
+    }, {
         timestamps: false
     });
 
@@ -71,17 +58,10 @@ module.exports = function(sequelize, DataTypes) {
     
     Artwork.belongsTo(models.Artist, {
       foreignKey: {
-        allowNull: false
-      }
-    });
-
-    Artwork.hasMany(models.Feedback, {
-      foreignKey: {
-        allowNull: false
+        allowNull: true 
       }
     });
   };
 
   return Artwork;
-
 };

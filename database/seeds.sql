@@ -21,9 +21,14 @@ INSERT INTO artworks (title, description, created_date, medium, feedback, imgURL
 VALUES ("Starry Night Over the Rhône is one of Vincent van Gogh paintings of Arles at nighttime. It was painted at a spot on the bank of the Rhône that was only a one or two-minute walk from the Yellow House on the Place Lamartine which Van Gogh was renting at the time. The night sky and the effects of light at night provided the subject for some of his more famous paintings, including Cafe Terrace at Night (painted earlier the same month) and the later canvas from Saint-Rémy, The Starry Night. A sketch of the painting is included in a letter van Gogh sent to his friend Eugène Boch on October 2 1888. Starry Night Over the Rhône, which is now in the Musée d Orsay in Paris, was first exhibited in 1889 at Paris annual exhibition of the Société des Artistes Indépendants. It was shown together with van Gogh Irises, which was added by Vincent brother, Theo.", 
 	'1888-09-01', "oil", "Hi! I'd love to buy an artwork!", "images/starry-rhone.jpg", "3!eeedededdeddedddedddeddddeddedee");
 
-INSERT INTO feedbacks (feedback_id, feedback) 
+INSERT INTO feedbacks (feedbackId, feedback) 
 VALUES ('1', 'Great work!');
 
+ALTER TABLE artworks
+ADD COLUMN updated_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 
-INSERT INTO artworks (title, description, created_date, medium, feedback, imgURL, beaconID 
-SELECT artist_id FROM artists WHERE artist_id=1 
+ALTER TABLE artworks
+ADD COLUMN created_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+/*INSERT INTO artworks (title, description, created_date, medium, feedback, imgURL, beaconID 
+SELECT artist_id FROM artists WHERE artist_id=1 */

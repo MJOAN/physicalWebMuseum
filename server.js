@@ -2,7 +2,6 @@
 //=====================================
 const express = require("express");
 const bodyParser = require("body-parser");
-// const path = require("path");
 const app = express();
 const exphbs = require("express-handlebars");
 const routes = require("./controllers/controller.js");

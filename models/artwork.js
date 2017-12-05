@@ -68,14 +68,14 @@ module.exports = function(sequelize, DataTypes) {
         timestamps: false
     });
 
-  Artwork.associate = function(models) {
+/*  Artwork.associate = function(models) {
     
     Artwork.belongsTo(models.Artist, {
       foreignKey: {
         allowNull: true 
       }
     });
-  };
+  };*/
 
   return Artwork;
 };

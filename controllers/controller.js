@@ -3,16 +3,15 @@ const express = require("express");
 const db = require("../models");
 const router = express.Router();
 
-router.get("/artwork/:title", function(req, res) {
+router.get("/artwork/:route", function(req, res) {
    db.Artwork.findAll({
         where: {
-            title: req.params.title
+            route: req.params.route
           }
         })
         .then(function(result) {
             console.log(result);
             var hbsObject = {
-                id: result[0].dataValues.id,
                 title: result[0].dataValues.title,
                 desc: result[0].dataValues.description,
                 img: result[0].dataValues.imgURL,

@@ -1,6 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
   var Artwork = sequelize.define("Artwork", {
 
+    route: { 
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [1]
+        }
+    },
     title: { 
         type: DataTypes.STRING,
         allowNull: false,

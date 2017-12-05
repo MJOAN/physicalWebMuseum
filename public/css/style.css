@@ -7,13 +7,18 @@ html, body {
 p {
 	padding: 0 2rem;
 }
+
+
 #mainImg {
 	width: 100%;
 	height: 400px;
 	padding-left: 2rem;
 }
 .rowTweet {
-	padding-left: 1rem;
+	padding-left: 2rem;
+  padding-right:2rem;
+  width: 100%;
+  /*height: 50%;*/
 }
 /* Can't get a border on the twitter widget
 The below is what I was trying */

@@ -3,56 +3,31 @@
     <img src="images/Parthenon-128.png" width="30" height="30" class="d-inline-block align-top" alt=""> The {{name}} Exhibit
     </a>
 </nav>
-
 <h1 class="text-center my-2">{{title}}</h1>
-
-<div class="row">
-    <div class="col-sm-6 mt-2">
-        <div class="row">
+<div class="container-fluid">
+    <div class="row mr-0 pr-0 mb-0 pb-0">
+        <div class="col-sm-6 mt-2 text-center">
             <img id="mainImg" src="{{img}}" />
-        </div>
-        <div class="row mt-2">
-            <h2 class="mx-auto">Audio of Artist Talking</h2>
+            <h2 class="mx-auto text-center mt-3">Audio of Artist Talking</h2>
             <audio controls preload="metadata" class="mx-auto">
                 <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
             </audio>
         </div>
-    </div>
-    <div class="col-sm-6 mt-2">
-        <div class="row">
+        <div class="col-sm-6 pl-2 mt-2">
             <p>Created on {{created}} with {{medium}}</p>
             <p>{{desc}}</p>
-        </div>
-        <div class="rowTweet">
-            {{!-- <div class="col-sm-12 mx-auto mt-2"> --}}
-                <a class="twitter-timeline" href="https://twitter.com/roberroberbill?ref_src=twsrc%5Etfw" width="500" height="300" border="1px solid black">Tweets by roberroberbill</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            {{!-- </div> --}}
+            <div class="rowTweet mt-2">
+                <a class="twitter-timeline" href="https://twitter.com/roberroberbill?ref_src=twsrc%5Etfw" height="300" border="1px solid black">Tweets by roberroberbill</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+            <div class="container ml-1">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <textarea class="form-control" rows="3" id="chat-box" placeholder="Enter feedback here!"></textarea>
+                        <button id="chat-submit" class="btn btn-lg pull-right">submit!</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-{{!-- <div class="row">
-    <div class="col-sm-6 mx-auto mt-2">
-        <a class="twitter-timeline" href="https://twitter.com/roberroberbill?ref_src=twsrc%5Etfw" width="400" height="400" border="1px solid black">Tweets by roberroberbill</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
-</div> --}}
-
-   <div class="container">
-
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-          <textarea class="form-control" rows="3" id="chat-box" placeholder="Enter feedback here!"></textarea>
-          <button id="chat-submit" class="btn btn-lg pull-right">submit!</button>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-          <h3>Feedback</h3>
-          <hr>
-          <div id="chat-area"></div>
-        </div>
-
-    </div>
-
-
-

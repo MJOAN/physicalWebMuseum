@@ -33,4 +33,9 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+
+db.Artwork.belongsTo(db.Artist);
+db.Artist.hasMany(db.Artwork);
+
+
 module.exports = db;

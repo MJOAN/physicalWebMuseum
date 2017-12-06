@@ -2,7 +2,7 @@ const express = require("express");
 const db = require("../models");
 const router = express.Router();
 
-router.get("/artwork/:route", function(req, res) {
+router.get("/:route", function(req, res) {
     db.Artwork.findAll({
         where: {
             route: req.params.route
@@ -10,12 +10,11 @@ router.get("/artwork/:route", function(req, res) {
         include: [{
             model: db.Artist,
         }]
-
     }).then(artworks => {
             const resObj = artworks.map(artworks => {
 
-               /* console.log(artworks._options.includeMap.Artist.attributes[1])
-*/
+                // console.log(artworks.dataValues.Artist.dataValues.name);
+
 
                     return Object.assign({}, {
                             title: artworks.dataValues.title,
@@ -26,18 +25,13 @@ router.get("/artwork/:route", function(req, res) {
                             medium: artworks.dataValues.medium,
                             created: artworks.dataValues.created_date,
                             beaconID: artworks.dataValues.beaconID,
-                            name: artworks._options.includeMap.Artist.attributes.map(artists => {
-
-                                console.log(artists)
-
-                                    return Object.assign({}, {
-                                            name: artists.dataValues.name
-                                        }
-                                    );
-                            })
+                            name: artworks.dataValues.Artist.dataValues.name
                     }); 
             });
-            res.render("index", resObj);
+
+            // console.log(resObj);
+
+            res.render("index", resObj[0]);
         });
     });
 

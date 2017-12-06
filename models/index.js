@@ -33,8 +33,8 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-
-db.Artwork.belongsTo(db.Artist);
+// db. (table name after define in models)
+db.Artwork.belongsTo(db.Artist, { foreignKey: { allowNull: false } });
 db.Artist.hasMany(db.Artwork);
 
 

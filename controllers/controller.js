@@ -3,12 +3,12 @@ const db = require("../models");
 const router = express.Router();
 
 router.get("/:route", function(req, res) {
-    db.Artwork.findAll({
+    db.pexq5x6f1q61gr26.Artwork.findAll({
         where: {
             route: req.params.route
         },
         include: [{
-            model: db.Artist,
+            model: db.pexq5x6f1q61gr26.Artist,
         }]
     }).then(artworks => {
             const resObj = artworks.map(artworks => {

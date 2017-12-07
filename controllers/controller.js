@@ -2,13 +2,17 @@ const express = require("express");
 const db = require("../models");
 const router = express.Router();
 
-router.get("/:route", function(req, res) {
+router.get("/", function(req, res) {
+    res.render("landingPage");
+});
+
+router.get("/artwork/:route", function(req, res) {
     db.Artwork.findAll({
         where: {
             route: req.params.route
         },
         include: [{
-            model: db.Artist,
+            model: db.Artist
         }]
     }).then(artworks => {
             const resObj = artworks.map(artworks => {
@@ -35,19 +39,25 @@ router.get("/:route", function(req, res) {
         });
     });
 
+router.get("/api/artists", function(req, res) {
+    db.Artist.findAll({
+        include: [{
+            model: db.Artwork
+        }]
+    }).then(authorList => {
+        // res.json(hbsObject);
+
+        hbsObject = {
+            artists: authorList,
+            pageTitle: 'Exhibition Management', 
+            css: 'style.css'
+        }
+
+        // res.json(hbsObject);
+
+        res.render("manageExhibitions.handlebars", hbsObject);
+    });
+});
+
 
 module.exports = router;
-
-
-/*
-
-            var hbsObject = {
-                title: result[0].dataValues.title,
-                desc: result[0].dataValues.description,
-                img: result[0].dataValues.imgURL,
-                video: result[0].dataValues.videoURL,
-                audio: result[0].dataValues.audioURL,
-                medium: result[0].dataValues.medium,
-                created: result[0].dataValues.created_date,
-                beaconID: result[0].dataValues.beaconID
-            };*/

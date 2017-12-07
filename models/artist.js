@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Artist = sequelize.define("pexq5x6f1q61gr26.Artist", {
+    var Artist = sequelize.define("Artist", {
 
       name: {
           type: DataTypes.STRING,

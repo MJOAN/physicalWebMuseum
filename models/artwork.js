@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Artwork = sequelize.define("Artwork", {
+    var Artwork = sequelize.define("pexq5x6f1q61gr26.Artwork", {
 
         route: {
             type: DataTypes.STRING,

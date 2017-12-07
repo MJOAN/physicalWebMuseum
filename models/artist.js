@@ -12,14 +12,6 @@ module.exports = function(sequelize, DataTypes) {
       {
       timestamps: false
     });
-/*
-    Artist.associate = function(models) {
-        Artist.hasMany(models.Artwork, {
-            foreignKey: {
-                allowNull: true
-            }
-        });
-    };
-*/
+
     return Artist;
 };

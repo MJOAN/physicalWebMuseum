@@ -39,6 +39,8 @@ router.get("/artwork/:route", function(req, res) {
         });
     });
 
+// Could use a different route name. Should save api for prefilling table for db edits
+
 router.get("/api/artists", function(req, res) {
     db.Artist.findAll({
         include: [{
@@ -48,16 +50,44 @@ router.get("/api/artists", function(req, res) {
         // res.json(hbsObject);
 
         hbsObject = {
+            artists: authorList
+            // ,
+            // pageTitle: 'Exhibition Management', 
+            // css: 'style.css'
+        }
+
+        res.json(hbsObject);
+
+        // res.render("manageExhibitions", hbsObject);
+    });
+});
+
+router.get("/settings", function(req, res) {
+    db.Artist.findAll({
+        include: [{
+            model: db.Artwork
+        }]
+    }).then(authorList => {
+
+        hbsObject = {
             artists: authorList,
             pageTitle: 'Exhibition Management', 
             css: 'style.css'
         }
 
-        // res.json(hbsObject);
+        res.render('manageExhibitions', hbsObject);
+    })
+})
 
-        res.render("manageExhibitions.handlebars", hbsObject);
-    });
-});
+router.post("/api/artists", function(req, res) {
+    console.log(req.body);
+    db.Artist.create(req.body).then(function(dbArtist) {
+        // res.render("manageExhibitions", dbArtist);
+        // res.redirect('back');
+        res.json(dbArtist);
+        // window.location.reload();
+    })
+})
 
 
 module.exports = router;

@@ -40,7 +40,8 @@
                     			{{Artworks.length}}
                     		</td>
                     		<td>
-                    			<a href="#">Add a New Artist w/ Content</a>
+                    			{{!-- need a route for updating --}}
+                    			<a href="cms?artist_id=">Add a New Content for this Artist</a>
                     		</td>
                     		<td>
                     			<a href="#">Delete Artist from Database</a>
@@ -49,9 +50,9 @@
                     	</tr>
                     	{{/each}}
                         <tr id="form-row">
-                            <form id="author-form">
+                            <form id="enterArtist">
                                 <td colspan="4">
-                                    <input placeholder="Enter a name" id="author-name" type="text" />
+                                    <input placeholder="Enter a name" id="artistName" type="text" />
                                 </td>
                                 <td>
                                     <button type="submit" class="btn btn-success">Add Artist</button>
@@ -64,5 +65,5 @@
         </div>
     </div>
 </div>
-{{!-- //
-<script src="js/author.js" type="text/javascript"></script> --}}
+
+{{!-- <script src="js/author.js" type="text/javascript"></script> --}}

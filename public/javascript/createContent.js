@@ -9,6 +9,7 @@ $(document).ready(function() {
 	const img = $('#googleCloudImg');
 	const video = $('#googleCloudVideo');
 	const audio = $('#googleCloudAudio');
+    const twitter = $('#twitterEmbedNumber');
 
 	$('#artistAddContent').on("submit", addEntryForAnArtist);
 
@@ -45,7 +46,8 @@ $(document).ready(function() {
             imgURL: img.val().trim(),
             videoURL: video.val().trim(),
             audioURL: audio.val().trim(),
-            beaconID: beaconId.val().trim(), 
+            beaconID: beaconId.val().trim(),
+            twitterData: twitter.val().trim(), 
             ArtistId: artistId
         }
 

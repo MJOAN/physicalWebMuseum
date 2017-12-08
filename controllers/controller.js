@@ -1,11 +1,21 @@
 const express = require("express");
 const db = require("../models");
 const router = express.Router();
-var Handlebars;
+// var Handlebars;
 
 router.get("/", function(req, res) {
-    res.render("landingPage");
+
+    hbsObject = {
+        pageTitle: 'Home Page',
+        customCss: './css/style.css'
+    }
+
+    res.render("landingPage", hbsObject);
 });
+
+router.get("/signup", function(req, res) {
+    res.render("signup");
+})
 
 router.get("/artwork/:route", function(req, res) {
     db.Artwork.findAll({
@@ -18,8 +28,6 @@ router.get("/artwork/:route", function(req, res) {
     }).then(artworks => {
         const resObj = artworks.map(artworks => {
 
-            console.log(resObj);
-
             return Object.assign({}, {
                 route: artworks.dataValues.route,
                 title: artworks.dataValues.title,
@@ -31,9 +39,13 @@ router.get("/artwork/:route", function(req, res) {
                 created: artworks.dataValues.created_date,
                 beaconID: artworks.dataValues.beaconID,
                 twitter: artworks.dataValues.twitterData,
-                name: artworks.dataValues.Artist.dataValues.name
+                name: artworks.dataValues.Artist.dataValues.name,
+                pageTitle: artworks.dataValues.Artist.dataValues.name + 'Exhibition',
+                customCss: '../css/style.css'
             });
         });
+
+        console.log(resObj[0]);
 
         res.render("index", resObj[0]);
     });
@@ -70,7 +82,8 @@ router.get("/settings", function(req, res) {
         hbsObject = {
             artists: authorList,
             pageTitle: 'Exhibition Management',
-            css: 'style.css'
+            customCss: './css/style.css',
+            customJS: './javascript/artist.js'
         }
 
         res.render('manageExhibitions', hbsObject);
@@ -96,11 +109,15 @@ router.get("/artistContent/:id", function(req, res) {
         }]
     }).then(dbContent => {
 
+        
+
         // if no artwork for that artist enter in the form handlebars boolean?
 
         hbsObject = {
             pieces: dbContent,
-            pageTitle: 'Artist Content'
+            pageTitle: 'Artist Content',
+            customCss: '../css/style.css',
+            customJS: '../javascript/createContent.js'
         }
 
         res.render('viewArtistContent', hbsObject);
@@ -117,18 +134,12 @@ router.get("/api/artworks/:id", function(req, res) {
         }]
     }).then(dbContent => {
 
-        // if no artwork for that artist enter in the form handlebars boolean?
-
         hbsObject = {
             pieces: dbContent
-            // ,
-            // pageTitle: 'Artist Content'
         }
 
         res.json(hbsObject);
     })
-
-    // res.render('viewArtistContent', hbsObject);
 });
 
 router.post("/api/artworks/:id", function(req, res) {

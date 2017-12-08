@@ -265,5 +265,10 @@ a:not([href]):not([tabindex]) {
 .resultsField {
     background-color: #eb2678;
     overflow: auto;
-    height: 420px;
+    height: 480px;
+}
+.formField {
+    background-color: #61C9A8;
+    overflow: auto;
+    height: 480px;
 }

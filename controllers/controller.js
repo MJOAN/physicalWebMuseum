@@ -17,9 +17,6 @@ router.get("/artwork/:route", function(req, res) {
     }).then(artworks => {
             const resObj = artworks.map(artworks => {
 
-                // console.log(artworks.dataValues.Artist.dataValues.name);
-
-
                     return Object.assign({}, {
                             title: artworks.dataValues.title,
                             desc: artworks.dataValues.description,
@@ -33,11 +30,9 @@ router.get("/artwork/:route", function(req, res) {
                     }); 
             });
 
-            // console.log(resObj);
-
-            res.render("index", resObj[0]);
-        });
+        res.render("index", resObj[0]);
     });
+});
 
 // Could use a different route name. Should save api for prefilling table for db edits
 
@@ -47,18 +42,13 @@ router.get("/api/artists", function(req, res) {
             model: db.Artwork
         }]
     }).then(authorList => {
-        // res.json(hbsObject);
 
         hbsObject = {
             artists: authorList
-            // ,
-            // pageTitle: 'Exhibition Management', 
-            // css: 'style.css'
         }
 
         res.json(hbsObject);
 
-        // res.render("manageExhibitions", hbsObject);
     });
 });
 
@@ -66,7 +56,10 @@ router.get("/settings", function(req, res) {
     db.Artist.findAll({
         include: [{
             model: db.Artwork
-        }]
+        }],
+        order: [
+            ['id', 'ASC']
+        ]
     }).then(authorList => {
 
         hbsObject = {
@@ -86,6 +79,29 @@ router.post("/api/artists", function(req, res) {
         // res.redirect('back');
         res.json(dbArtist);
         // window.location.reload();
+    })
+})
+
+router.get("/artistContent/:id", function(req, res) {
+    db.Artwork.findAll({
+        where: {
+            ArtistId: req.params.id
+        },
+        include: [{
+            model: db.Artist
+        }]
+    }).then(dbContent => {
+
+        // if no artwork for that artist enter in the form handlebars boolean?
+
+        hbsObject = {
+            pieces: dbContent,
+            pageTitle: 'Artist Content'
+        }
+
+        // res.json(hbsObject);
+
+        res.render('viewArtistContent', hbsObject);
     })
 })
 

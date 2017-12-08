@@ -230,3 +230,40 @@ body {
     width: 42rem;
   }
 }
+
+/* View Artist Content Styling */
+.profilePhoto {
+    height: 140px;
+    width: 140px;
+    float: left;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+a:not([href]):not([tabindex]) {
+    color: inherit;
+    text-decoration: none;
+}
+
+.edit {
+    float: right;
+    color: white !important;
+    background-color: #eb2678;
+    border-color: #eb2678;
+    /*font-family: 'Quicksand', sans-serif;*/
+    font-weight: bold;
+}
+.artworkTitle {
+    color: black;
+    margin-top: 0.3em;
+    margin-left: 30%;
+}
+.artInfo {
+    color: black !important;
+    margin-left: 30%;
+}
+.resultsField {
+    background-color: #eb2678;
+    overflow: auto;
+    height: 420px;
+}

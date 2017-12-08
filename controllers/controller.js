@@ -82,6 +82,8 @@ router.post("/api/artists", function(req, res) {
     })
 })
 
+// Adding Already exsisting artist, content into db
+
 router.get("/artistContent/:id", function(req, res) {
     db.Artwork.findAll({
         where: {
@@ -99,11 +101,43 @@ router.get("/artistContent/:id", function(req, res) {
             pageTitle: 'Artist Content'
         }
 
-        // res.json(hbsObject);
-
         res.render('viewArtistContent', hbsObject);
     })
 })
+
+router.get("/api/artworks/:id", function(req, res) {
+    db.Artwork.findAll({
+        where: {
+            ArtistId: req.params.id
+        },
+        include: [{
+            model: db.Artist
+        }]
+    }).then(dbContent => {
+
+        // if no artwork for that artist enter in the form handlebars boolean?
+
+        hbsObject = {
+            pieces: dbContent
+            // ,
+            // pageTitle: 'Artist Content'
+        }
+
+        res.json(hbsObject);
+    })
+
+        // res.render('viewArtistContent', hbsObject);
+});
+
+router.post("/api/artworks/:id", function(req, res) {
+    console.log(req.body);
+    db.Artwork.create(req.body).then(dbArtwork => {
+        res.json(dbArtwork);
+    })
+})
+
+
+
 
 
 module.exports = router;

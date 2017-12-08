@@ -65,7 +65,7 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         twitterData: {
-            type: DataTypes.BIGINT,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]

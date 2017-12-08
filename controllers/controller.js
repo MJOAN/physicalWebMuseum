@@ -1,6 +1,7 @@
 const express = require("express");
 const db = require("../models");
 const router = express.Router();
+var Handlebars;
 
 router.get("/", function(req, res) {
     res.render("landingPage");
@@ -15,24 +16,37 @@ router.get("/artwork/:route", function(req, res) {
             model: db.Artist
         }]
     }).then(artworks => {
-            const resObj = artworks.map(artworks => {
+        const resObj = artworks.map(artworks => {
 
-                console.log(artworks);
 
-                    return Object.assign({}, {
-                            route: artworks.dataValues.route,
-                            title: artworks.dataValues.title,
-                            desc: artworks.dataValues.description,
-                            img: artworks.dataValues.imgURL,
-                            video: artworks.dataValues.videoURL,
-                            audio: artworks.dataValues.audioURL,
-                            medium: artworks.dataValues.medium,
-                            created: artworks.dataValues.created_date,
-                            beaconID: artworks.dataValues.beaconID,
-                            twitter: artworks.dataValues.twitter,
-                            name: artworks.dataValues.Artist.dataValues.name
-                    }); 
+            // Handlebars.registerHelper('link', function(artworks) {
+            //     var url = Handlebars.escapeExpression(artworks.dataValues.twitter);
+            //         // text = Handlebars.escapeExpression(object.text);
+
+            //     return new Handlebars.SafeString(
+            //         "<a href='" + url + "'></a>"
+            //     );
+            // });
+
+            console.log(artworks);
+
+            return Object.assign({}, {
+                route: artworks.dataValues.route,
+                title: artworks.dataValues.title,
+                desc: artworks.dataValues.description,
+                img: artworks.dataValues.imgURL,
+                video: artworks.dataValues.videoURL,
+                audio: artworks.dataValues.audioURL,
+                medium: artworks.dataValues.medium,
+                created: artworks.dataValues.created_date,
+                beaconID: artworks.dataValues.beaconID,
+                twitter: Handlebars.registerHelper('link', function(artworks) {
+                var url = Handlebars.escapeExpression(artworks.dataValues.twitter);
+                    return new Handlebars.SafeString(url);
+                }),
+                name: artworks.dataValues.Artist.dataValues.name
             });
+        });
 
         res.render("index", resObj[0]);
     });
@@ -68,7 +82,7 @@ router.get("/settings", function(req, res) {
 
         hbsObject = {
             artists: authorList,
-            pageTitle: 'Exhibition Management', 
+            pageTitle: 'Exhibition Management',
             css: 'style.css'
         }
 
@@ -127,7 +141,7 @@ router.get("/api/artworks/:id", function(req, res) {
         res.json(hbsObject);
     })
 
-        // res.render('viewArtistContent', hbsObject);
+    // res.render('viewArtistContent', hbsObject);
 });
 
 router.post("/api/artworks/:id", function(req, res) {

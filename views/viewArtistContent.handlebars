@@ -1,0 +1,73 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+    <img src="../images/Parthenon-128.png" width="30" height="30" class="d-inline-block align-top" alt=""> The Museum's Exhibition Management Page
+    </a>
+</nav>
+<div class="container">
+    <div class="row results mt-5">
+        <!-- Artwork Results -->
+        <div class="col-md-6 resultsField">
+            {{#each pieces}}
+            <div class='row'>
+                <div class='card w-100 mx-2 my-1 resultsUser' style='width: 20rem;'>
+                    <div class='card-body p-1'>
+                        <img class='card-img-top profilePhoto mr-auto' src='{{imgURL}}' alt='' />
+                        <a class='btn edit' data-id='{{id}}' href="#">Edit</a>
+                        <h4 class='card-title artworkTitle'>{{title}}</h4>
+                        <h6 class="artInfo">{{medium}}</h5>
+	                    <h6 class="artInfo">{{created_date}}</h6>
+                        <h6 class='artInfo'>{{beaconId}}</h6>
+                        <p class="artInfo">{{description}}</p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <!-- Form for updating -->
+        <div class="col-md-6 formField">
+            <form id="artistAddContent" class="p-2">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="routeName">Route Name (URL)</label>
+                        <input type="text" class="form-control" id="routeName" placeholder="No spaces allowed">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="date">Date Created</label>
+                        <input type="date" class="form-control" id="date">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pieceTitle">Title of the Piece</label>
+                    <input type="text" class="form-control" id="pieceTitle" placeholder="Title">
+                </div>
+                <div class="form-group">
+                    <label for="desc">Description</label>
+                    <textarea type="text" class="form-control" id="desc" rows='3' placeholder="..."></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="medium">Medium</label>
+                        <input type="text" class="form-control" id="medium">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="beacon">Beacon ID</label>
+                        <input type="text" class="form-control" id="beacon">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="googleCLoudImg">Img Link</label>
+                    <input type="url" class="form-control" id="googleCloudImg">
+                </div>
+                <div class="form-group">
+                    <label for="googleCLoudVideo">Video Link</label>
+                    <input type="url" class="form-control" id="googleCloudVideo">
+                </div>
+                <div class="form-group">
+                    <label for="googleCLoudAudio">Audio Link</label>
+                    <input type="url" class="form-control" id="googleCloudAudio">
+                </div>
+                <button type="submit" class="btn btn-primary">Create Content</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -63,19 +63,16 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 len: [1]
             }
+        },
+        twitterData: {
+            type: DataTypes.BIGINT,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
         }
     }, {
         timestamps: false
     });
-
-    // Artwork.associate = function(models) {
-
-    //     Artwork.belongsTo(models.artists, {
-    //         foreignKey: 'artistId',
-    //         refrences: 'artists',
-    //         refrencesKey: 'id'
-    //     });
-    // };
-
     return Artwork;
 };

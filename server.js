@@ -7,7 +7,6 @@ const exphbs = require("express-handlebars");
 const routes = require("./controllers/controller.js");
 const db = require("./models");
 
-
 // Variable Port
 //======================================
 const PORT = process.env.PORT || 8080;

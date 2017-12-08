@@ -17,7 +17,10 @@ router.get("/artwork/:route", function(req, res) {
     }).then(artworks => {
             const resObj = artworks.map(artworks => {
 
+                console.log(artworks);
+
                     return Object.assign({}, {
+                            route: artworks.dataValues.route,
                             title: artworks.dataValues.title,
                             desc: artworks.dataValues.description,
                             img: artworks.dataValues.imgURL,
@@ -26,6 +29,7 @@ router.get("/artwork/:route", function(req, res) {
                             medium: artworks.dataValues.medium,
                             created: artworks.dataValues.created_date,
                             beaconID: artworks.dataValues.beaconID,
+                            twitter: artworks.dataValues.twitter,
                             name: artworks.dataValues.Artist.dataValues.name
                     }); 
             });
@@ -75,10 +79,7 @@ router.get("/settings", function(req, res) {
 router.post("/api/artists", function(req, res) {
     console.log(req.body);
     db.Artist.create(req.body).then(function(dbArtist) {
-        // res.render("manageExhibitions", dbArtist);
-        // res.redirect('back');
         res.json(dbArtist);
-        // window.location.reload();
     })
 })
 

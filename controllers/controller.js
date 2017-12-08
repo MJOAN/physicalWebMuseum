@@ -18,17 +18,7 @@ router.get("/artwork/:route", function(req, res) {
     }).then(artworks => {
         const resObj = artworks.map(artworks => {
 
-
-            // Handlebars.registerHelper('link', function(artworks) {
-            //     var url = Handlebars.escapeExpression(artworks.dataValues.twitter);
-            //         // text = Handlebars.escapeExpression(object.text);
-
-            //     return new Handlebars.SafeString(
-            //         "<a href='" + url + "'></a>"
-            //     );
-            // });
-
-            console.log(artworks);
+            console.log(resObj);
 
             return Object.assign({}, {
                 route: artworks.dataValues.route,
@@ -40,10 +30,7 @@ router.get("/artwork/:route", function(req, res) {
                 medium: artworks.dataValues.medium,
                 created: artworks.dataValues.created_date,
                 beaconID: artworks.dataValues.beaconID,
-                twitter: Handlebars.registerHelper('link', function(artworks) {
-                var url = Handlebars.escapeExpression(artworks.dataValues.twitter);
-                    return new Handlebars.SafeString(url);
-                }),
+                twitter: artworks.dataValues.twitterData,
                 name: artworks.dataValues.Artist.dataValues.name
             });
         });

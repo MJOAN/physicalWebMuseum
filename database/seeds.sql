@@ -11,7 +11,7 @@ VALUES ('mosswall', 'Moss Wall', 'Moss Walls are an opportunity to have vertical
 	'2017-12-01', 'Materials are naturally preserved including deer moss, mood moss, forest moss, etc.', "https://storage.googleapis.com/physicalweb-museum/IMG_6161.jpg",
 "https://storage.googleapis.com/physicalweb-museum/Buffalo3355.mp4",
 "https://storage.googleapis.com/physicalweb-museum/PhillipEstlundCollages.mp3", '3!eeedededdeddedddedddeddddeddedee',
-"<a class='twitter-timeline'  href='https://twitter.com/hashtag/mosswall' data-widget-id='939218823059685376' height='300'>#mosswall Tweets</a>",
+'939218823059685376',
 2);
 
 INSERT INTO artworks (route, title, description, created_date, medium, imgURL, videoURL, audioURL, beaconID, twitterData, ArtistId) 
@@ -19,5 +19,5 @@ VALUES ('abbotsdream', 'Abbot’s Dream', 'In 1898, a coin toss would change the
 	'2015', 'interior latex, acrylic and oil, black marker and pencil', "https://storage.googleapis.com/physicalweb-museum/download.jpeg",
 "https://storage.googleapis.com/physicalweb-museum/Buffalo3355.mp4",
 "https://storage.googleapis.com/physicalweb-museum/PhillipEstlundCollages.mp3", '3!cbcbcbcbcb3cb36cb368cb3681cbcbcb',
-"<a class='twitter-timeline'  href='https://twitter.com/hashtag/abbotsdream' data-widget-id='939213246451429376' heigh='300'>#abbotsdream Tweets</a>",
+'939213246451429376',
 2);

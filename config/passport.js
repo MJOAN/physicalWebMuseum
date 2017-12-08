@@ -15,9 +15,7 @@ passport.deserializeUser(function(user, done) {
 });
 
 passport.use(new LocalStrategy(
-  {
-    usernameField: "email"
-  },
+
   function(email, password, done) {
     // When a user tries to sign in this code runs
     db.User.find({ where: { email: email }}).success(function(user) {

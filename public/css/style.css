@@ -1,6 +1,6 @@
 html, body {
 	box-sizing: border-box;
-	height: auto;
+	/*height: auto;*/
 	width: 100%;
 	background-color: #CFD2DF;
 }

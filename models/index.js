@@ -36,6 +36,6 @@ db.Sequelize = Sequelize;
 
 db.Artwork.belongsTo(db.Artist);
 db.Artist.hasMany(db.Artwork);
-
+db.User.hasMany(db.Artist);
 
 module.exports = db;

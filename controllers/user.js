@@ -1,17 +1,18 @@
-const express = require("express");
-const db = require("../models");
-const router = express.Router();
-//const passport = require("passport");
+var db = require('../models');
 
-router.get("/signup", function(req, res) {
-  res.render("signup");
-});
+exports.signUp = function(req, res) {
+	res.render("signup.html")
+}
 
-
-router.get("/login", function(req, res) {
-  res.render("login");
-});
-
-
-module.exports = router;
-
+exports.register = function(req, res) {
+	db.User.find({ where: { email: email }}).success(function(user) {
+     	if(!user) {
+      		db.User.create({ email: req.body.username, password: req.body.password }).error(function(err) {
+      		console.log(err);	
+      	});
+    	} else {
+    		res.redirect('/signup')
+    	}
+	});
+	res.redirect('/');
+}

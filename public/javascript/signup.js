@@ -1,40 +1,43 @@
 $(document).ready(function() {
-  // Getting references to our form and input
-  var signUpForm = $("form.signup");
-  var emailInput = $("input#email-input");
-  var passwordInput = $("input#password-input");
 
-  // When the signup button is clicked, we validate the email and password are not blank
-  signUpForm.on("submit", function(event) {
+  var signUp = $(".form-group");
+
+  signUp.on("submit", function(event) {
     event.preventDefault();
-    var userData = {
-      email: emailInput.val().trim(),
-      password: passwordInput.val().trim()
-    };
 
-    if (!userData.email || !userData.password) {
-      return;
-    }
-    // If we have an email and password, run the signUpUser function
-    signUpUser(userData.email, userData.password);
-    emailInput.val("");
-    passwordInput.val("");
+    var email = $("#email-input").val().trim();
+    var password = $("#password-input").val().trim();
+    console.log("got here");
+  
+  $.ajax({
+      type: 'POST',
+      url: '/signup',
+      data: {
+        email: email,
+        password: password
+      }
+    }).then, function(data) {
+        console.log(data);
+        console.log('Posted email ' + data + ' to the db.');
+      }
   });
+});
 
-  // Does a post to the signup route. If succesful, we are redirected to the members page
-  // Otherwise we log any errors
-  function signUpUser(email, password) {
-    $.post("/api/signup", {
+/*
+  $.post("/signup", {
       email: email,
       password: password
-    }).then(function(data) {
-      window.location.replace(data);
-      // If there's an error, handle it by throwing up a boostrap alert
-    }).catch(handleLoginErr);
-  }
+    }).then(function(user) {
+      console.log(user);
 
-  function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
-    $("#alert").fadeIn(500);
-  }
-});
+
+      window.location.href = "/login";
+
+ }).catch(function(err) {
+      console.log("Incorrect Username or Password");
+      console.log(err);
+
+    });
+  });
+
+});*/

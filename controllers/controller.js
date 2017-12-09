@@ -57,7 +57,10 @@ router.get("/api/artists", function(req, res) {
     db.Artist.findAll({
         include: [{
             model: db.Artwork
-        }]
+        }],
+        order: [
+            ['id', 'ASC']
+        ]
     }).then(authorList => {
 
         hbsObject = {
@@ -109,8 +112,6 @@ router.get("/artistContent/:id", function(req, res) {
         }]
     }).then(dbContent => {
 
-        
-
         // if no artwork for that artist enter in the form handlebars boolean?
 
         hbsObject = {
@@ -147,7 +148,21 @@ router.post("/api/artworks/:id", function(req, res) {
     db.Artwork.create(req.body).then(dbArtwork => {
         res.json(dbArtwork);
     })
-})
+});
+
+router.put("/api/artworks/:id", function(req, res) {
+    console.log(req.body);
+    db.Artwork.update(
+        req.body, 
+        {
+            where: {
+
+                id: req.body.ArtistId
+            }
+        }).then(dbArtwork => {
+            res.json(dbArtwork);
+        })
+});
 
 
 

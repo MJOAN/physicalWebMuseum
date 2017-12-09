@@ -23,7 +23,7 @@ $(document).ready(function() {
 
     function getArtists() {
         $.get("/api/artists", function() {
-            console.log('gotten');
+            // console.log('gotten');
         })
     }
 

@@ -20,7 +20,10 @@ const twitter = $('#twitterEmbedNumber');
 
             var self = $(this);
 
-            $(".editRow" + ($(this).data("id"))).html('<form style="height: 250px; overflow: auto; border: black solid 1px; width: 90%;" id="editArtistContent" class="p-2">' +
+            $(".formField").remove();
+            $(".resultsField").css("background-color", "transparent");
+
+            $(".editRow" + ($(this).data("id"))).html('<form style="height: 480px; width: 1000px; background-color: lightblue; overflow: auto;" id="editArtistContent" class="p-2">' +
                 // Route Input
                 '<div class="form-group row">' +
                 '<label for="routeNameEdit" class="col-sm-2 col-form-label">Route Name (URL)</label>' +
@@ -83,7 +86,7 @@ const twitter = $('#twitterEmbedNumber');
                 '</div></div>' +
                 // Submit for Edit
                 '<a class="btn btn-success editDB" href="#">Edit Content</button>' +
-                '</form>')
+                '</form>');
 
             $(document).on("click", '.editDB', function() {
 

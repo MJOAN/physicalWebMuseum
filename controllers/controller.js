@@ -125,6 +125,8 @@ router.get("/artistContent/:id", function(req, res) {
     })
 })
 
+router.get("/editArtistContent/:id")
+
 router.get("/api/artworks/:id", function(req, res) {
     db.Artwork.findAll({
         where: {

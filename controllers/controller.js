@@ -18,8 +18,6 @@ router.get("/artwork/:route", function(req, res) {
     }).then(artworks => {
         const resObj = artworks.map(artworks => {
 
-       
-
             return Object.assign({}, {
                 route: artworks.dataValues.route,
                 title: artworks.dataValues.title,

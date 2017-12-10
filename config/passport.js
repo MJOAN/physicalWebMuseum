@@ -17,15 +17,12 @@ passport.deserializeUser(function(user, done) {
 
 
 passport.use(new LocalStrategy(
-<<<<<<< HEAD
     {
     usernameField: "email",
     passwordField : "password",
     passReqToCallback : true // whole request goes to cb
   },
-=======
 
->>>>>>> aeb1e9f001a6356871dae9d121e316c708bf325a
   function(email, password, done) {
     db.User.find({
       where: {

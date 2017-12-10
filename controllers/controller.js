@@ -1,7 +1,6 @@
 const express = require("express");
 const db = require("../models");
 const router = express.Router();
-<<<<<<< HEAD
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
@@ -9,40 +8,37 @@ const bcrypt = require('bcrypt-nodejs');
 
 
 
-router.get("/login", function(req, res) {
-  res.render("login");
-});
-
-router.post("/login", passport.authenticate('local', { 
-  failureRedirect: '/signin',
-  successRedirect: '/settings'
-}))
-
-router.get("/signup", function(req, res) {
-    res.render("signup");
-});
-
-
 router.post("/signup", function(req, res, next){
-console.log(req.body);
+    console.log(req.body.email);
       db.User.create({
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password)
       }).then(function(user){
+        console.log("router.post to db passport auth waiting");
         passport.authenticate("local", {
             failureRedirect:"/", 
             successRedirect: "/login"})(req, res, next)
       })
     });
 
+router.post("/login", passport.authenticate('local', { 
+  failureRedirect: '/signin',
+  successRedirect: '/settings'
+}))
+
+
+router.get("/login", function(req, res) {
+  res.render("login");
+});
+
+router.get("/signup", function(req, res) {
+    res.render("signup");
+});
+
 router.get("/logout", function(req, res) {
     req.logout();
     res.redirect('/login');
 });
-
-=======
-var Handlebars;
->>>>>>> bcdc5c56e505d12eec2e26eb4c7b0767e5b3abc5
 
 router.get("/", function(req, res) {
     res.render("landingPage");
@@ -59,11 +55,7 @@ router.get("/artwork/:route", function(req, res) {
     }).then(artworks => {
         const resObj = artworks.map(artworks => {
 
-<<<<<<< HEAD
-            console.log(resObj);
-=======
             // console.log(resObj);
->>>>>>> bcdc5c56e505d12eec2e26eb4c7b0767e5b3abc5
 
             return Object.assign({}, {
                 route: artworks.dataValues.route,
@@ -98,8 +90,6 @@ router.get("/api/artists", function(req, res) {
         }
 
         res.json(hbsObject);
-
-<<<<<<< HEAD
     });
 });
 
@@ -153,9 +143,6 @@ router.get("/artistContent/:id", function(req, res) {
     });
 });
 
-=======
-    });
-});
 
 router.get("/settings", function(req, res) {
     db.Artist.findAll({
@@ -207,7 +194,6 @@ router.get("/artistContent/:id", function(req, res) {
     })
 })
 
->>>>>>> bcdc5c56e505d12eec2e26eb4c7b0767e5b3abc5
 router.get("/api/artworks/:id", function(req, res) {
     db.Artwork.findAll({
         where: {
@@ -237,11 +223,7 @@ router.post("/api/artworks/:id", function(req, res) {
     db.Artwork.create(req.body).then(dbArtwork => {
         res.json(dbArtwork);
     })
-<<<<<<< HEAD
 });
-=======
-})
->>>>>>> bcdc5c56e505d12eec2e26eb4c7b0767e5b3abc5
 
 
 

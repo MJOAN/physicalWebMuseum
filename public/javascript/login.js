@@ -1,30 +1,36 @@
 $(document).ready(function() {
 
-  const loginForm = $(".form-group");
-  const email = $("#email-input");
-  const password = $("#password-input");
 
-  loginForm.on("submit", function(event) {
+  $("#form").on("submit", function(event) {
     event.preventDefault();
 
-    var user = {
-      email: email.val().trim(),
-      password: password.val().trim()
+    var email = $("#email-input").val().trim();
+    var password = $("#password-input").val().trim();
+
+
+    const userData = {
+      email: email,
+      password:  password
     };
+    
+    // loginUser(userData);
+    console.log(userData)
 
-  $.post("/login", {
-      email: user.email,
-      password: uesr.password
-    }).then(function(user) {
-      console.log(user);
+    // function loginUser(userData) {
+       $.ajax({
+          url: "/login",
+          type: "POST",
+          data: userData
+        }).done(function(data) {
+          console.log('Log In Successful!');
+          console.log(userData);
 
-      window.location.href = "/settings";
-
- }).catch(function(err) {
-      console.log("Incorrect Username or Password");
-      console.log(err);
-
-    });
-  };
-
+        }).fail(function(err) {
+          console.log(err);
+      });
+    };
+  });
 });
+
+
+  // var formData = $('#form').serialize();

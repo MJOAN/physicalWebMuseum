@@ -1,0 +1,82 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+    <img src="../images/Parthenon-128.png" width="30" height="30" class="d-inline-block align-top" alt=""> Editing {{piece.Artist.name}}'s Content. Artwork ID: {{piece.id}}
+    </a>
+</nav>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row mx-auto">
+            <form id="editArtistContent" class="p-2">
+                {{!-- <div class="form-group">
+                    <label for="artistId">Artist ID</label>
+                    <select class="form-control" id="artistId">
+                        <option>{{piece.Artist.id}}</option>
+                    </select>
+                </div> --}}
+                <h3 id="artistId">Artist ID: {{piece.Artist.id}}</h3>
+                <h3 id="artworkId">Artwork ID: {{piece.id}}</h3>
+                <div class="form-group">
+                    <label for="routeNameEdit">Route Name (URL)</label>
+                    <div>
+                        <input class="form-control" type="text" id="routeNameEdit" value="{{{piece.route}}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dateEdit">Date Created</label>
+                    <div>
+                        <input class="form-control" type="date" id="dateEdit" placeholder="No spaces allowed">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="titleEdit">Title</label>
+                    <div>
+                        <input class="form-control" type="text" id="titleEdit" value="{{{piece.title}}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="descEdit">Description</label>
+                    <div>
+                        <textarea class="form-control" type="text" id="descEdit" rows="3">{{piece.description}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mediumEdit">Medium</label>
+                    <div>
+                        <input class="form-control" type="text" id="mediumEdit" value="{{{piece.medium}}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="beaconEdit">Beacon ID</label>
+                    <div>
+                        <input class="form-control" type="text" id="beaconEdit" value="{{{piece.beaconID}}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="twitterEdit">Twitter Embed Number</label>
+                    <div>
+                        <input class="form-control" type="text" id="twitterEdit" value="{{{piece.twitterData}}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="imgEdit">Image Shareable Link (From Google Cloud)</label>
+                    <div>
+                        <input class="form-control" type="url" id="imgEdit" value="{{{piece.imgURL}}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="videoEdit">Video Shareable Link (From Google Cloud)</label>
+                    <div>
+                        <input class="form-control" type="url" id="videoEdit" value="{{{piece.videoURL}}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="audioEdit">Audio Shareable Link (From Google Cloud)</label>
+                    <div>
+                        <input class="form-control" type="url" id="audioEdit" value="{{{piece.audioURL}}}">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Edit Content</button>
+            </form>
+        </div>
+    </div>
+</div>

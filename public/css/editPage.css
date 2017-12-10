@@ -1,0 +1,21 @@
+html, body {
+	box-sizing: border-box;
+	height: 100%;
+	width: 100%;
+	background-color: #CFD2DF;
+}
+
+#editArtistContent {
+	height: 600px;
+	width: 1000px; 
+	background-color: lightblue; 
+	overflow: auto;
+}
+
+.jumbotron {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}

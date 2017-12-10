@@ -1,6 +1,7 @@
 const express = require("express");
 const db = require("../models");
 const router = express.Router();
+<<<<<<< HEAD
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
@@ -39,6 +40,9 @@ router.get("/logout", function(req, res) {
     res.redirect('/login');
 });
 
+=======
+var Handlebars;
+>>>>>>> bcdc5c56e505d12eec2e26eb4c7b0767e5b3abc5
 
 router.get("/", function(req, res) {
     res.render("landingPage");
@@ -55,7 +59,11 @@ router.get("/artwork/:route", function(req, res) {
     }).then(artworks => {
         const resObj = artworks.map(artworks => {
 
+<<<<<<< HEAD
             console.log(resObj);
+=======
+            // console.log(resObj);
+>>>>>>> bcdc5c56e505d12eec2e26eb4c7b0767e5b3abc5
 
             return Object.assign({}, {
                 route: artworks.dataValues.route,
@@ -91,6 +99,7 @@ router.get("/api/artists", function(req, res) {
 
         res.json(hbsObject);
 
+<<<<<<< HEAD
     });
 });
 
@@ -144,6 +153,61 @@ router.get("/artistContent/:id", function(req, res) {
     });
 });
 
+=======
+    });
+});
+
+router.get("/settings", function(req, res) {
+    db.Artist.findAll({
+        include: [{
+            model: db.Artwork
+        }],
+        order: [
+            ['id', 'ASC']
+        ]
+    }).then(authorList => {
+
+        hbsObject = {
+            artists: authorList,
+            pageTitle: 'Exhibition Management',
+            css: 'style.css'
+        }
+
+        res.render('manageExhibitions', hbsObject);
+    })
+})
+
+router.post("/api/artists", function(req, res) {
+    console.log(req.body);
+    db.Artist.create(req.body).then(function(dbArtist) {
+        res.json(dbArtist);
+    })
+})
+
+// Adding Already exsisting artist, content into db
+
+router.get("/artistContent/:id", function(req, res) {
+    db.Artwork.findAll({
+        where: {
+            ArtistId: req.params.id
+        },
+        include: [{
+            model: db.Artist
+        }]
+    }).then(dbContent => {
+
+        // if no artwork for that artist enter in the form handlebars boolean?
+
+        hbsObject = {
+            pieces: dbContent,
+            pageTitle: 'Artist Content'
+        }
+
+        res.render('viewArtistContent', hbsObject);
+    })
+})
+
+>>>>>>> bcdc5c56e505d12eec2e26eb4c7b0767e5b3abc5
 router.get("/api/artworks/:id", function(req, res) {
     db.Artwork.findAll({
         where: {
@@ -173,7 +237,11 @@ router.post("/api/artworks/:id", function(req, res) {
     db.Artwork.create(req.body).then(dbArtwork => {
         res.json(dbArtwork);
     })
+<<<<<<< HEAD
 });
+=======
+})
+>>>>>>> bcdc5c56e505d12eec2e26eb4c7b0767e5b3abc5
 
 
 

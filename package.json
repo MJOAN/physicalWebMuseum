@@ -26,8 +26,11 @@
     "express-session": "^1.15.6",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.1",
+<<<<<<< HEAD
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+=======
+>>>>>>> bcdc5c56e505d12eec2e26eb4c7b0767e5b3abc5
     "path": "^0.12.7",
     "sequelize": "^4.25.1"
   },

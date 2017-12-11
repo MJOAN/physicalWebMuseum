@@ -112,10 +112,6 @@ router.delete("/api/artists/:id", function(req, res) {
         }]
     }).then(dbArtist => {
 
-        // hbsObject = {
-        //     artists: dbArtist
-        // }
-
         res.json(dbArtist);
     })
 });
@@ -255,7 +251,7 @@ router.put("/api/artworks/:id", function(req, res) {
     })
 });
 
-// Loads specific artpiece info into form
+// Loads specific artpiece info into edit form
 router.get("/api/editArtwork/:id", function(req, res) {
     db.Artwork.findOne({
         where: {

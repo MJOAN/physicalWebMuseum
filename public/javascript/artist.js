@@ -9,8 +9,6 @@ $(document).ready(function() {
 
         const artistId = $(this).data("id");
 
-        // console.log(artistId);
-
         deleteArtist(artistId);
 
     });
@@ -34,7 +32,7 @@ $(document).ready(function() {
 
     function getArtists() {
         $.get("/api/artists", function() {
-        })
+        });
     }
 
     function submitArtist(artist) {
@@ -50,7 +48,6 @@ $(document).ready(function() {
         $.ajax({
                 method: "DELETE",
                 url: "/api/artists/" + artistId,
-                // data: artistId
             }).done(function() {
                 window.location.href = "/settings";
         });

@@ -34,8 +34,8 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 // db. (table name after define in models)
-db.Artwork.belongsTo(db.Artist, { foreignKey: { allowNull: false, onDelete: 'CASCADE' } });
-db.Artist.hasMany(db.Artwork, { foreignKey: { onDelete: 'CASCADE'} } );
+db.Artwork.belongsTo(db.Artist, { onDelete: 'CASCADE', allowNull: false } );
+db.Artist.hasMany(db.Artwork, { onDelete: 'CASCADE'} );
 
 
 module.exports = db;

@@ -12,7 +12,7 @@ router.get("/", function(req, res) {
 
     hbsObject = {
         pageTitle: 'Home Page',
-        customCss: './css/style.css'
+        customCss: './css/homePage.css'
     }
 
     res.render("landingPage", hbsObject);
@@ -43,7 +43,7 @@ router.get("/settings", function(req, res) {
         hbsObject = {
             artists: authorList,
             pageTitle: 'Exhibition Management',
-            customCss: './css/style.css',
+            customCss: './css/homePage.css',
             customJS: './javascript/artist.js'
         }
 
@@ -78,6 +78,47 @@ router.post("/api/artists", function(req, res) {
         res.json(dbArtist);
     })
 });
+// Allows to delte an artist from Settings Page
+router.get("/api/artists/:id", function(req, res) {
+    db.Artist.findAll({
+        where: {
+            id: req.params.id
+        },
+        include: [{
+            model: db.Artwork
+        }]
+    }).then(authorList => {
+
+        res.json(authorList);
+
+    });
+});
+
+// Deletes artist from Settings Page
+router.delete("/api/artists/:id", function(req, res) {
+
+    // console.log(req.url);
+
+    const id = req.url.split("/artists/")[1];
+
+    console.log(id);
+
+    db.Artist.destroy({
+        where: {
+            id: id
+        },
+        include: [{
+            model: db.Artwork
+        }]
+    }).then(dbArtist => {
+
+        // hbsObject = {
+        //     artists: dbArtist
+        // }
+
+        res.json(dbArtist);
+    })
+});
 // ======================================================
 
 
@@ -108,7 +149,7 @@ router.get("/artwork/:route", function(req, res) {
                 twitter: artworks.dataValues.twitterData,
                 name: artworks.dataValues.Artist.dataValues.name,
                 pageTitle: artworks.dataValues.Artist.dataValues.name + 'Exhibition',
-                customCss: '../css/style.css'
+                customCss: '../css/artworkRoutes.css'
             });
         });
 
@@ -133,12 +174,10 @@ router.get("/artistContent/:id", function(req, res) {
         }]
     }).then(dbContent => {
 
-        // if no artwork for that artist enter in the form handlebars boolean?
-
         hbsObject = {
             pieces: dbContent,
             pageTitle: 'Artist Content',
-            customCss: '../css/style.css',
+            customCss: '../css/viewArtistContent.css',
             customJS: '../javascript/createContent.js'
         }
 
@@ -156,8 +195,6 @@ router.get("/api/artworks/:id", function(req, res) {
             model: db.Artist
         }]
     }).then(dbContent => {
-
-        // console.log(dbContent);
 
         hbsObject = {
             pieces: dbContent
@@ -181,8 +218,6 @@ router.post("/api/artworks/:id", function(req, res) {
 // ======================================================
 // Editing an already existing piece for an artist Route
 router.get("/editArtistContent/:id", function(req, res) {
-
-    // console.log(req.body);
 
     db.Artwork.findOne({
         where: {

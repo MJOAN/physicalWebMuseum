@@ -43,7 +43,7 @@ router.get("/settings", function(req, res) {
         hbsObject = {
             artists: authorList,
             pageTitle: 'Exhibition Management',
-            customCss: './css/homePage.css',
+            customCss: './css/settingsPage.css',
             customJS: './javascript/artist.js'
         }
 
@@ -205,6 +205,26 @@ router.post("/api/artworks/:id", function(req, res) {
     db.Artwork.create(req.body).then(dbArtwork => {
         res.json(dbArtwork);
     })
+});
+
+// Deletes a specific art piece
+router.delete("/api/editArtwork/:id", function(req, res) {
+
+    // console.log(req.url);
+
+    const id = req.url.split("/editArtwork/")[1];
+
+    console.log(id);
+
+    db.Artwork.destroy({
+        where: {
+            id: id
+        }
+    }).then(dbArtwork => {
+
+        res.json(dbArtwork);
+    });
+
 });
 // ======================================================
 

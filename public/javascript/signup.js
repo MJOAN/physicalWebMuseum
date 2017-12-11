@@ -6,9 +6,14 @@ $(document).ready(function() {
     var email = $("#email-input").val().trim();
     var password = $("#password-input").val().trim();
     var formData = $(this).serialize();
-    // console.log(email);
 
-  $.post("/signup", formData, function(response) {
+    var userData = {
+      email: email, 
+      password: password
+    }
+
+  $.post("/signup", userData, function(response) {
+
       console.log(email);
       console.log("Thanks for signing up!");
 

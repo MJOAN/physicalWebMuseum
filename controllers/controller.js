@@ -8,23 +8,50 @@ const bcrypt = require('bcrypt-nodejs');
 
 
 
-router.post("/signup", function(req, res, next){
+/*router.post("/signup", function(req, res, next){
     console.log(req.body.email);
       db.User.create({
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password)
       }).then(function(user){
-        console.log("router.post to db passport auth waiting");
+        console.log("passport auth not running yet");
         passport.authenticate("local", {
             failureRedirect:"/", 
-            successRedirect: "/login"})(req, res, next)
+            successRedirect: "/settings"})(req, res, next)
       })
     });
+router.post("/signin", passport.authenticate('local', { 
+  failureRedirect: '/',
+  successRedirect: '/login'
+}))
+*/
+
+
+router.post("/signup", function(req, res, next){
+console.log(req.body.email);
+  db.User.findOne({
+    where: {
+     email: req.body.email
+    }
+  }).then(function(user){
+    if(!user){
+      db.User.create({
+        email: req.body.email,
+        password: bcrypt.hashSync(req.body.password)
+      }).then(function(user){
+        passport.authenticate("local", {failureRedirect:"/", successRedirect: "/login"})(req, res, next)
+      })
+    } else {
+      res.send("user is now signed up! Redirect to the settings page!");
+      res.json(user);
+    }
+  })
+})
 
 router.post("/login", passport.authenticate('local', { 
   failureRedirect: '/signin',
   successRedirect: '/settings'
-}))
+}));
 
 
 router.get("/login", function(req, res) {

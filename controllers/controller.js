@@ -82,8 +82,6 @@ router.get("/artwork/:route", function(req, res) {
     }).then(artworks => {
         const resObj = artworks.map(artworks => {
 
-            // console.log(resObj);
-
             return Object.assign({}, {
                 route: artworks.dataValues.route,
                 title: artworks.dataValues.title,
@@ -102,6 +100,7 @@ router.get("/artwork/:route", function(req, res) {
         res.render("index", resObj[0]);
     });
 });
+
 
 // Could use a different route name. Should save api for prefilling table for db edits
 

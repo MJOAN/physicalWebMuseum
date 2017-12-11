@@ -1,6 +1,6 @@
 html, body {
 	box-sizing: border-box;
-	height: auto;
+	/*height: auto;*/
 	width: 100%;
 	background-color: #CFD2DF;
 }
@@ -11,7 +11,7 @@ p {
 
 #mainImg {
 	width: 100%;
-	height: 400px;
+	height: 45%;
 	padding-left: 2rem;
 }
 .rowTweet {
@@ -66,6 +66,9 @@ p {
   font-size: 10px;
 }
 
+#artworkDiscription {
+  font-size: 3.25em;
+}
 
 /* Should make separate .css files can do with handlebars*/
 /*=======================================================*/
@@ -106,6 +109,8 @@ body {
   text-align: center;
   text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
 }
+
+
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
@@ -164,42 +169,8 @@ body {
   border-bottom-color: #fff;
 }
 
-@media (min-width: 48em) {
-  .masthead-brand {
-    float: left;
-  }
-  .nav-masthead {
-    float: right;
-  }
-}
 
-/*
- * Cover
- */
-
-.cover {
-  padding: 0 1.5rem;
-}
-.cover .btn-lg {
-  padding: .75rem 1.25rem;
-  font-weight: 700;
-}
-
-
-/*
- * Footer
- */
-
-.mastfoot {
-  color: rgba(255,255,255,.5);
-}
-
-
-/*
- * Affix and center
- */
-
-@media (min-width: 40em) {
+@media (max-width: 767px) {
   /* Pull out the header and footer */
   .masthead {
     position: fixed;
@@ -209,6 +180,13 @@ body {
     position: fixed;
     bottom: 0;
   }
+
+  #mainImg {
+  width: 100%;
+  height: 45%;
+  padding-left: 2rem;
+}
+
 
   /* Start the vertical centering */
   .site-wrapper-inner {
@@ -223,7 +201,7 @@ body {
   }
 }
 
-@media (min-width: 62em) {
+@media (min-width: 768px) {
   .masthead,
   .mastfoot,
   .cover-container {
@@ -231,6 +209,7 @@ body {
   }
 }
 
+ 
 /* View Artist Content Styling */
 .profilePhoto {
     height: 140px;
@@ -272,3 +251,4 @@ a:not([href]):not([tabindex]) {
     overflow: auto;
     height: 480px;
 }
+

@@ -1,8 +1,8 @@
 html, body {
 	box-sizing: border-box;
-	height: 100%;
+	height: auto;
 	width: 100%;
-	background-color: #CFD2DF;
+	background-color: #333;
 }
 
 #editArtistContent {
@@ -10,12 +10,6 @@ html, body {
 	width: 1000px; 
 	background-color: lightblue; 
 	overflow: auto;
+	border-radius: 5px;
 }
 
-.jumbotron {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
-
-  display: flex;
-  align-items: center;
-}

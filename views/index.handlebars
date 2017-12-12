@@ -1,29 +1,27 @@
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
-    <img src="images/Parthenon-128.png" width="30" height="30" class="d-inline-block align-top" alt=""> The {{name}} Exhibit
+    <img src="../images/Parthenon-128.png" width="30" height="30" class="d-inline-block align-top" alt=""> The {{name}} Exhibit
     </a>
 </nav>
 <h1 class="text-center my-2">{{title}}</h1>
-<div class="container-fluid">
-    <!-- <div class="row mr-0 pr-0 mb-0 pb-0"> -->
-        <div class="row">
-        <div class="col-lg-6 mt-2 text-center">
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 mt-2 text-center">
             <img id="mainImg" src="{{img}}" />
-            <h2 class="mx-auto text-center mt-3">{{name}} interview with KFMD</h2>
+            <h2 class="mx-auto text-center mt-3 text-white">{{name}} interview with KFMD</h2>
             <audio controls preload="metadata" class="mx-auto">
-                <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+                <source src="{{audio}}" type="audio/mp3">
             </audio>
         </div>
-        </div>
-        <div class="row">
-        <div class="col-lg-6 pl-2 mt-2">
+        <div class="col-sm-12">
             <p>Created on {{created}} with {{medium}}</p>
-            <p id="artworkDiscription">{{desc}}</p>
-            <div class="rowTweet mt-2">
-                <a class='twitter-timeline'  href='https://twitter.com/hashtag/mosswall' data-widget-id='{{{twitter}}}' height='300'>#mosswall Tweets</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </div>
+            <p>{{desc}}</p>
+        </div>
+        <div class="col-sm-12 mb-2">
+            <a class='twitter-timeline' href='https://twitter.com/hashtag/mosswall' data-widget-id='{{{twitter}}}' height='400' width='720'>#mosswall Tweets</a>
         </div>
         </div>
     <!-- </div> -->
 </div>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>

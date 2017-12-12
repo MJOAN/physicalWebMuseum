@@ -31,14 +31,6 @@ app.use(cookieParser());
 app.use(session({secret: 'secret'}));
 app.use(passport.initialize());
 app.use(passport.session());
- 
-app.use(function(req, res, callback){  // THIS IS for PASSPORT 
-  if(req.user){
-    res.locals.currentUser = req.user.email
-  }
-  next();
-})
-// END 
 
 // Creating the Handlebars View Engine
 //======================================

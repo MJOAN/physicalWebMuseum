@@ -31,7 +31,6 @@
                     <tbody>
                     	{{#each artists}}
                     	<tr>
-                    		{{!-- {{#each artists}} --}}
                     		<td>
 								{{name}}
                     		</td>
@@ -42,13 +41,12 @@
                     			{{Artworks.length}}
                     		</td>
                     		<td>
-                    			{{!-- need a route for updating --}}
-                    			<a href="cms?artist_id=">Add a New Content for this Artist</a>
+                    			<a href="artistContent/{{{id}}}">Add a New Content for this Artist</a>
                     		</td>
                     		<td>
-                    			<a href="#">Delete Artist from Database</a>
+                                {{!-- needs an on hover effect to show button status --}}
+                    			<a class="delete-artist" data-id="{{{id}}}" href="">Delete Artist from Database (and all associated artwork)</a>
                     		</td>
-                    		{{!-- {{/each}} --}}
                     	</tr>
                     	{{/each}}
                         <tr id="form-row">
@@ -67,5 +65,3 @@
         </div>
     </div>
 </div>
-
-{{!-- <script src="js/author.js" type="text/javascript"></script> --}}

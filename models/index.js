@@ -33,9 +33,9 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-
-db.Artwork.belongsTo(db.Artist, { foreignKey: { allowNull: false } });
-db.Artist.hasMany(db.Artwork);
-// db.User.hasMany(db.Artist);
+// db. (table name after define in models)
+db.Artwork.belongsTo(db.Artist, { onDelete: 'CASCADE', allowNull: false } );
+db.Artist.hasMany(db.Artwork, { onDelete: 'CASCADE'} );
+db.User.hasMany(db.Artist, { onDelete: 'CASCADE', allowNull: false } );
 
 module.exports = db;

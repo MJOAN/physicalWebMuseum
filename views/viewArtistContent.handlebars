@@ -4,18 +4,19 @@
     </a>
 </nav>
 <div class="container">
-    <div class="row results mt-5">
+    <div class="row mt-5">
         <!-- Artwork Results -->
         <div class="col-md-6 resultsField">
             {{#each pieces}}
-            <div class='row'>
+            <div class='row editRow{{{id}}}'>
                 <div class='card w-100 mx-2 my-1 resultsUser' style='width: 20rem;'>
-                    <div class='card-body p-1'>
+                    <div class='card-body p-1'> 
                         <img class='card-img-top profilePhoto mr-auto' src='{{imgURL}}' alt='' />
-                        <a class='btn edit' data-id='{{id}}' href="#">Edit</a>
-                        <h4 class='card-title artworkTitle'>{{title}}</h4>
-                        <h6 class="artInfo">{{medium}}</h5>
-	                    <h6 class="artInfo">{{created_date}}</h6>
+                        <a class="btn delete" data-id="{{id}}">Delete</a>
+                        <a class='btn edit mr-1' data-id='{{id}}' href="../editArtistContent/{{{id}}}">Edit</a>
+                        <h4 class='card-title artworkTitle'><a href="../artwork/{{{route}}}">{{title}}</a></h4>
+                        <h6 class="artInfo">{{medium}}</h6>
+	                    <h6 class="artInfo created">{{created_date}}</h6>
                         <h6 class='artInfo'>{{beaconId}}</h6>
                         <p class="artInfo">{{description}}</p>
                     </div>
@@ -53,6 +54,10 @@
                         <label for="beacon">Beacon ID</label>
                         <input type="text" class="form-control" id="beacon">
                     </div>
+                </div>
+                <div class="form-group">
+                    <label for="twitterEmbedNumber">Twitter Embed Number</label>
+                    <input type="text" class="form-control" id="twitterEmbedNumber">
                 </div>
                 <div class="form-group">
                     <label for="googleCLoudImg">Img Link</label>

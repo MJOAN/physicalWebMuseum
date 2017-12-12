@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-   $("form").submit(function(event) {
+   $("#form").submit(function(event) {
     event.preventDefault();
   
     var email = $("#email-input").val().trim();
@@ -16,6 +16,8 @@ $(document).ready(function() {
 
       console.log(email);
       console.log("Thanks for signing up!");
+
+      window.location.href = "/settings";
 
       }); 
   });

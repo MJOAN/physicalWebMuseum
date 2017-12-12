@@ -36,6 +36,7 @@ app.use(function(req, res, callback){  // THIS IS for PASSPORT
   if(req.user){
     res.locals.currentUser = req.user.email
   }
+  next();
 })
 // END 
 

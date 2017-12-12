@@ -14,6 +14,14 @@
     "dialect": "mysql"
   },
   "production": {
-    "dialect": "mysql"
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql",
+    "username": "jlsytexkf4f2tst4",
+    "password": "p7v3yrmc5eixdg01",
+    "database": "pexq5x6f1q61gr26",
+    "host": "k3xio06abqa902qt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
   }
 }
+
+
+

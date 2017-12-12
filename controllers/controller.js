@@ -1,6 +1,50 @@
 const express = require("express");
 const db = require("../models");
 const router = express.Router();
+const passport = require("passport");
+const LocalStrategy = require('passport-local').Strategy;
+const User = require('../models/user');
+const bcrypt = require('bcrypt-nodejs');
+
+router.post("/signup", function(req, res, next){
+console.log(req.body.email);
+  db.User.findOne({
+    where: {
+     email: req.body.email
+    }
+  }).then(function(user){
+    if(!user){
+      db.User.create({
+        email: req.body.email,
+        password: bcrypt.hashSync(req.body.password)
+      }).then(function(user){
+        passport.authenticate("local", {failureRedirect:"/", successRedirect: "/login"})(req, res, next)
+      })
+    } else {
+      res.send("user is now signed up! Redirect to the settings page!");
+      res.json(user);
+    }
+  })
+})
+
+router.post("/login", passport.authenticate('local', { 
+  failureRedirect: '/signin',
+  successRedirect: '/settings'
+}));
+
+
+router.get("/login", function(req, res) {
+  res.render("login");
+});
+
+router.get("/signup", function(req, res) {
+    res.render("signup");
+});
+
+router.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect('/login');
+});
 
 // Routes are grouped by where they are accessed on the browser
 // Hopefully this helps when trying to modularize the controller
@@ -19,14 +63,7 @@ router.get("/", function(req, res) {
 });
 // ======================================================
 
-
-//=======================================================
-// Log In / Signup / Auth Routes
-router.get("/signup", function(req, res) {
-    res.render("signup");
-});
-// ======================================================
-
+// Could use a different route name. Should save api for prefilling table for db edits
 
 // ======================================================
 // Settings & Admin Routes
@@ -46,13 +83,19 @@ router.get("/settings", function(req, res) {
             customCss: './css/settingsPage.css',
             customJS: './javascript/artist.js'
         }
-
+      
         res.render('manageExhibitions', hbsObject);
     })
 });
 
 // Loads Pre-Exsisting Artists into Settings Page
 router.get("/api/artists", function(req, res) {
+
+        res.json(hbsObject);
+    });
+});
+
+router.get("/settings", function(req, res) {
     db.Artist.findAll({
         include: [{
             model: db.Artwork
@@ -63,13 +106,65 @@ router.get("/api/artists", function(req, res) {
     }).then(authorList => {
 
         hbsObject = {
-            artists: authorList
+            artists: authorList,
+            pageTitle: 'Exhibition Management',
+            css: 'style.css'
         }
 
-        res.json(hbsObject);
+        res.render('manageExhibitions', hbsObject);
+    })
+})
 
+router.post("/api/artists", function(req, res) {
+    console.log(req.body);
+    db.Artist.create(req.body).then(function(dbArtist) {
+        res.json(dbArtist);
+    })
+})
+
+// Adding Already exsisting artist, content into db
+
+router.get("/artistContent/:id", function(req, res) {
+    db.Artwork.findAll({
+        where: {
+            ArtistId: req.params.id
+        },
+        include: [{
+            model: db.Artist
+        }]
+    }).then(dbContent => {
+
+        // if no artwork for that artist enter in the form handlebars boolean?
+
+        hbsObject = {
+            pieces: dbContent,
+            pageTitle: 'Artist Content'
+        }
+
+        res.render('viewArtistContent', hbsObject);
     });
 });
+
+
+// router.get("/settings", function(req, res) {
+  
+//     db.Artist.findAll({
+//         include: [{
+//             model: db.Artwork
+//         }],
+//         order: [
+//             ['id', 'ASC']
+//         ]
+//     }).then(authorList => {
+
+//         hbsObject = {
+//             artists: authorList
+//         }
+
+//         res.json(hbsObject);
+
+//     });
+// });
 
 // Creates a New Artist for the Settings Page
 router.post("/api/artists", function(req, res) {

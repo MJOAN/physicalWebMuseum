@@ -7,22 +7,21 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt-nodejs');
 
 router.post("/signup", function(req, res, next){
-console.log(req.body.email);
-  db.User.findOne({
-    where: {
-     email: req.body.email
-    }
-  }).then(function(user){
-    if(!user){
-      db.User.create({
-        email: req.body.email,
-        password: bcrypt.hashSync(req.body.password)
-      }).then(function(user){
-        passport.authenticate("local", {failureRedirect:"/", successRedirect: "/login"})(req, res, next)
-      })
-    } else {
-      res.send("user is now signed up! Redirect to the settings page!");
-      res.json(user);
+    console.log(req.body.email);
+    db.User.findOne({
+            where: {
+                email: req.body.email
+            }
+        }).then(function(user) {
+                if (!user) {
+                    db.User.create({
+                        email: req.body.email,
+                        password: bcrypt.hashSync(req.body.password)
+                    }).then(function(user) {
+                        passport.authenticate("local", { failureRedirect: "/", successRedirect: "/login" })(req, res, next)
+                    })   } else {
+          res.send("user is now signed up! Redirect to the settings page!");
+          res.json(user);
     }
   })
 })
@@ -93,7 +92,7 @@ router.get("/api/artists", function(req, res) {
 
         res.json(hbsObject);
     });
-});
+// });
 
 router.get("/settings", function(req, res) {
     db.Artist.findAll({

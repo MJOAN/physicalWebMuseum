@@ -17,6 +17,8 @@ $(document).ready(function() {
       console.log(email);
       console.log("Thanks for signing up!");
 
+      window.location.href = "/settings";
+
       }); 
   });
 });

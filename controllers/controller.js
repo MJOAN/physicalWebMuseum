@@ -33,7 +33,27 @@ router.post("/login", passport.authenticate('local', {
 
 
 router.get("/login", function(req, res) {
-  res.render("login");
+
+    // for you to play around with 
+
+    // if authenticated 
+
+    // db.User.findAll({
+    //     where: {
+    //         email: req.body.email
+    //     }
+    // }).then(dbUser => {
+
+    //     hbsObject = {
+    //         user: dbUser,
+    //         pageTitle: 'Login Page',
+    //         customCSS: './..',
+    //         customJS: './javascript/login.js'
+    //     }
+
+    // })
+
+  res.render("login", hbsObject);
 });
 
 router.get("/signup", function(req, res) {

@@ -5,6 +5,11 @@ const bodyParser = require("body-parser");
 const app = express();
 const exphbs = require("express-handlebars");
 const routes = require("./controllers/controller.js");
+const settingsRoutes = require("./controllers/settingsController.js");
+const authRoutes = require("./controllers/authController.js");
+const clientRoutes = require("./controllers/clientController.js");
+const viewArtistRoutes = require("./controllers/artistContentController.js");
+const editArtistRoutes = require("./controllers/editArtistController.js");
 const db = require("./models");
 
 // Variable Port
@@ -39,7 +44,12 @@ app.set("view engine", "handlebars");
 
 // Routing
 //======================================
-app.use("/", routes);
+app.use("/", routes, 
+	settingsRoutes, 
+	authRoutes,
+	clientRoutes,
+	viewArtistRoutes,
+	editArtistRoutes);
 
 //Lisening to the PORT
 //======================================

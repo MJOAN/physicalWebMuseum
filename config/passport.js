@@ -3,43 +3,45 @@ const LocalStrategy = require("passport-local").Strategy;
 const db = require("../models");
 const bcrypt = require('bcrypt-nodejs');
 
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
 
-passport.deserializeUser(function(user, done) {
-  db.User.find({where:  {id}}).success(function(user){
-    done(null, user);
-  }).error(function(err){
-    done(err, null)
-  });
-});
 
 passport.use(new LocalStrategy(
-
-  function(email, password, done) {
-    db.User.find({ where: { email: email }}).success(function(user) {
-      passwd = user ? user.password : " "
-      isMatch = db.User.validPassword(password, passwd, done, user)
-    }); 
+  // Our user will sign in using an email, rather than a "username"
+  {
+    usernameField: "email"
+  },
+  function(username, password, done) {
+    // When a user tries to sign in this code runs
+    db.User.findOne({
+      where: {
+        email: email
+      }
+    }).then(function(dbUser) {
+      // If there's no user with the given username
+      if (!dbUser) {
+        return done(null, false, {
+          message: "Incorrect email."
+        });
+      }
+      // If there is a user with the given username, but the password the user gives us is incorrect
+      else if (!dbUser.validPassword(password)) {
+        return done(null, false, {
+          message: "Incorrect password."
+        });
+      }
+      // If none of the above, return the user
+      return done(null, dbUser);
+    });
   }
 ));
 
 
-/*passport.use(new Strategy(function(username, pass, cb){
-  var hashedPass = bcrypt.hashSync(pass)
-  User.findOne({
-    where: {
-      username: username
-    }
-  }).then(function(user, err){
-    if (err) { return cb(err); }
-    if (!user) { 
-    return cb(null, false); }
-    if (!bcrypt.compareSync(pass, user.password)){ 
-      return cb(null, false); }
-    return cb(null, user);
-  })
-}))*/
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
 
 module.exports = passport;

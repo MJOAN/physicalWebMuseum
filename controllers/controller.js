@@ -137,33 +137,14 @@ router.get("/artistContent/:id", function(req, res) {
 
         hbsObject = {
             pieces: dbContent,
-            pageTitle: 'Artist Content'
+            pageTitle: 'Artist Content',
+            customCss: '../css/viewArtistContent.css',
+            customJS: '../javascript/createContent.js'
         }
 
         res.render('viewArtistContent', hbsObject);
     });
 });
-
-
-// router.get("/settings", function(req, res) {
-  
-//     db.Artist.findAll({
-//         include: [{
-//             model: db.Artwork
-//         }],
-//         order: [
-//             ['id', 'ASC']
-//         ]
-//     }).then(authorList => {
-
-//         hbsObject = {
-//             artists: authorList
-//         }
-
-//         res.json(hbsObject);
-
-//     });
-// });
 
 // Creates a New Artist for the Settings Page
 router.post("/api/artists", function(req, res) {

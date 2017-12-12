@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    console.log('hello');
+
 const route = $('#routeName');
 const date = $('#date');
 const title = $('#pieceTitle');

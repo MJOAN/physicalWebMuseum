@@ -33,7 +33,7 @@ const session = require('express-session');
 const passportconfig = require("./config/passport");
 
 app.use(cookieParser());
-app.use(session({secret: 'secret'}));
+// app.use(session({secret: 'secret'}));
 app.use(passport.initialize());
 app.use(passport.session());
 

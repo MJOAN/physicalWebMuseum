@@ -1,0 +1,19 @@
+{
+  "name": "Physical Web Museum",
+  "display": "browser",
+  "background_color": "#333",
+  "description": "Checking to see if this works",
+  "icons": [{
+    "src": "images/if_Theatre_605496.png",
+    "sizes": "48x48",
+    "type": "image/png"
+  }, {
+    "src": "images/if_Theatre_605496(1).png",
+    "sizes": "64x64",
+    "type": "image/png"
+  }, {
+    "src": "images/if_Theatre_605496(2).png",
+    "sizes": "128x128",
+    "type": "image/png"
+  }]
+}

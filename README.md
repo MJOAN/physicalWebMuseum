@@ -1,9 +1,9 @@
 # physicalWebMuseum
-Ever been to a museum?
-
 <p align="center">
 <img src="https://user-images.githubusercontent.com/29084524/33924918-f4253c72-df8c-11e7-8802-1c886772f3af.png" width="425"/>
 </p>
+
+Ever been to a museum?
 
 -Of course you have.
 
@@ -45,11 +45,15 @@ If you’d like to explicitly turn on Physical Web, try the following:
 
 (Marshmallow ONLY) On Marshmallow (Android 6.0) devices, the Physical Web requires that Chrome is granted the Location runtime permission. If you have not already granted this permission, enabling the Physical Web privacy option will automatically prompt you to grant it. This step is not necessary on pre-Marshmallow versions of Android.
 
+<p align="center">
 <img src="https://user-images.githubusercontent.com/29084524/33868221-8ea99d38-deb6-11e7-8bf0-00f58351f07b.png" width="425"/>
+</p>
 
 3. To see URLs when you are nearby a beacon in the future, swipe down on your notification shade to see a low priority notification informing you of nearby Physical Web URLs. swipe down on your notification shade to see a low priority notification.
 
+<p align="center">
 <img src="https://user-images.githubusercontent.com/29084524/33868222-8ebf6f5a-deb6-11e7-9c57-c85d7caffe56.png" width="425"/>
+</p>
 
 4. Tap on notification. You will see a list of nearby URLs.
 
@@ -59,11 +63,15 @@ Chrome for iOS supports the Physical Web as of July 2015. You can take the follo
 
 1. Turn on Bluetooth if not enabled.
 
+<p align="center">
 <img src="https://user-images.githubusercontent.com/29084524/33924364-9decedb6-df8a-11e7-9aec-33662a955c94.png" width="425"/>
+</p>
 
 2. Swipe down notification shade and swipe to the left to visit ‘Today’ view. Scroll to the bottom and tap ‘Edit’.
 
+<p align="center">
 <img src="https://user-images.githubusercontent.com/29084524/33924366-9e2a9ad0-df8a-11e7-9c1e-160b46a81286.png" width="425"/>
+</p>
 
 3. Scroll down to the ‘More Widgets’ section and add the Chrome widget.
 
@@ -71,11 +79,15 @@ Chrome for iOS supports the Physical Web as of July 2015. You can take the follo
 
 4. Click ‘Done’ and scroll to the Chrome widget. Opt in to the Physical Web. If the opt-in message does not appear, toggle the "Show More" button until the widget expands.
 
+<p align="center">
 <img src="https://user-images.githubusercontent.com/29084524/33924365-9e114f4e-df8a-11e7-9ab9-06b901ea3af8.png" width="425"/>
+</p>
 
 5. Go near beacons broadcasting Eddystone-URL sites. You should now see beacons in the widget.
 
+<p align="center">
 <img src="https://user-images.githubusercontent.com/29084524/33924363-9dd6874c-df8a-11e7-9807-b601dfc1de51.png" width="425"/>
+</p>
 
 ## Requirements
 **The requirements for Project #2 are as follows:**

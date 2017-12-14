@@ -30,7 +30,7 @@ const cookieParser = require('cookie-parser');
 const passport = require("passport");
 const local = require("passport-local");
 const session = require('express-session');
-const passportconfig = require("./config/passport");
+require("./config/passport")(passport);
 
 app.use(cookieParser());
 app.use(session({secret: 'secret'}));
@@ -49,7 +49,7 @@ app.use("/", routes,
 	authRoutes,
 	clientRoutes,
 	viewArtistRoutes,
-	editArtistRoutes);
+	editArtistRoutes)//(passport)
 
 //Lisening to the PORT
 //======================================

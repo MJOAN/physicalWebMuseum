@@ -1,47 +1,41 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const db = require("../models");
 const bcrypt = require('bcrypt-nodejs');
 
+const db = require("../models");
+const User = require("../models/user");
 
+module.exports = function(passport) {
+
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  db.User.find({where:  {id}}).success(function(user){
+    done(null, user)
+  });
+});
 
 passport.use(new LocalStrategy(
-  // Our user will sign in using an email, rather than a "username"
-  {
-    usernameField: "email"
-  },
+      {
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback: true
+    },
   function(username, password, done) {
-    // When a user tries to sign in this code runs
-    db.User.findOne({
-      where: {
-        email: email
+    db.User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
       }
-    }).then(function(dbUser) {
-      // If there's no user with the given username
-      if (!dbUser) {
-        return done(null, false, {
-          message: "Incorrect email."
-        });
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
       }
-      // If there is a user with the given username, but the password the user gives us is incorrect
-      else if (!dbUser.validPassword(password)) {
-        return done(null, false, {
-          message: "Incorrect password."
-        });
-      }
-      // If none of the above, return the user
-      return done(null, dbUser);
-    });
-  }
-));
+      return done(null, user);
+      });
+    }
+  ));
 
-
-passport.serializeUser(function(user, cb) {
-  cb(null, user);
-});
-
-passport.deserializeUser(function(obj, cb) {
-  cb(null, obj);
-});
-
-module.exports = passport;
+}; 

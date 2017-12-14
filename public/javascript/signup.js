@@ -1,22 +1,21 @@
 $(document).ready(function() {
 
-   $("#form").submit(function(event) {
+  $("form").on("submit", function(event) {
     event.preventDefault();
   
     var email = $("#email-input").val().trim();
     var password = $("#password-input").val().trim();
-    var formData = $(this).serialize();
+    //  var formData = $(this).serialize();
 
     var userData = {
       email: email, 
       password: password
     }
 
-  $.post("/signup", userData, function(response) {
+    console.log(userData);  // userData not working keeping formData
 
-      console.log(email);
-      console.log("Thanks for signing up!");
-
+  $.post("/signup", userData, function(userData) {
+      console.log("Thanks for signing up!" + userData);
       window.location.href = "/settings";
 
       }); 

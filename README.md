@@ -41,7 +41,9 @@ If you’d like to explicitly turn on Physical Web, try the following:
 
 <img src="https://user-images.githubusercontent.com/29084524/33868218-8e621dc8-deb6-11e7-8886-76d10c4b21b5.png" width="425"/> <img src="https://user-images.githubusercontent.com/29084524/33868223-8ed64856-deb6-11e7-917c-c70be5b49c4b.png" width="425"/>
 
+<p align="center">
 <img src="https://user-images.githubusercontent.com/29084524/33868220-8e8d462e-deb6-11e7-87b1-cffb627bfa5a.png" width="425"/>
+</p>
 
 (Marshmallow ONLY) On Marshmallow (Android 6.0) devices, the Physical Web requires that Chrome is granted the Location runtime permission. If you have not already granted this permission, enabling the Physical Web privacy option will automatically prompt you to grant it. This step is not necessary on pre-Marshmallow versions of Android.
 

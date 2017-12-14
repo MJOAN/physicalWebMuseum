@@ -30,27 +30,12 @@ const cookieParser = require('cookie-parser');
 const passport = require("passport");
 const local = require("passport-local");
 const session = require('express-session');
-const passportconfig = require("./config/passport");
+require("./config/passport")(passport);
 
 app.use(cookieParser());
 app.use(session({secret: 'secret'}));
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-// We may need this in server (per Mariam)
-// it was in an example of checking to see if user is logged in, but it stops the local host 
-// from connecting when it's on 
-// ==============================================================
-
-// app.use(function(req, res, callback){  // THIS IS for PASSPORT 
-//   if(req.user){
-//     res.locals.currentUser = req.user.email
-//   }
-// })
-// END 
-// ==============================================================
-
 
 // Creating the Handlebars View Engine
 //======================================
@@ -64,7 +49,7 @@ app.use("/", routes,
 	authRoutes,
 	clientRoutes,
 	viewArtistRoutes,
-	editArtistRoutes);
+	editArtistRoutes)//(passport)
 
 //Lisening to the PORT
 //======================================

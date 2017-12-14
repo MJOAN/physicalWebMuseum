@@ -1,7 +1,9 @@
 # physicalWebMuseum
 Ever been to a museum?
 
-<img style="text-align:center" src="https://user-images.githubusercontent.com/29084524/33924918-f4253c72-df8c-11e7-8802-1c886772f3af.png" width="425"/>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/29084524/33924918-f4253c72-df8c-11e7-8802-1c886772f3af.png" width="425"/>
+</p>
 
 -Of course you have.
 

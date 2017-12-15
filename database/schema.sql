@@ -2,6 +2,9 @@ DROP DATABASE if exists physicalweb_museum;
 CREATE DATABASE physicalweb_museum;
 USE physicalweb_museum;
 
+-- Heroku database
+-- zan01axlmt6sy51j
+
 
 CREATE TABLE artists
 (

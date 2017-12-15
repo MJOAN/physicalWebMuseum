@@ -31,11 +31,11 @@
                     			{{Artworks.length}}
                     		</td>
                     		<td>
-                    			<a href="artistContent/{{{id}}}">Add a New Content for this Artist</a>
+                    			<a class="btn btn-outline-info" href="artistContent/{{{id}}}">Add New Content for this Artist</a>
                     		</td>
                     		<td>
                                 {{!-- needs an on hover effect to show button status --}}
-                    			<a class="delete-artist" data-id="{{{id}}}" href="">Delete Artist from Database (and all associated artwork)</a>
+                    			<a class="delete-artist btn btn-outline-danger" data-id="{{{id}}}" href="">Delete Artist from Database (and all associated artwork)</a>
                     		</td>
                     	</tr>
                     	{{/each}}

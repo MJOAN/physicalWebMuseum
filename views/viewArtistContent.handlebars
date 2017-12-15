@@ -2,9 +2,18 @@
     <a class="navbar-brand" href="#">
     <img src="../images/Parthenon-128.png" width="30" height="30" class="d-inline-block align-top" alt=""> The Museum's Exhibition Management Page
     </a>
+    <a class="nav-link btn btn-outline-primary" href="/settings">Return to Settings</a>
 </nav>
 <div class="container">
-    <div class="row mt-5">
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h1 class="text-center text-white">Their Artwork</h1>
+        </div>
+        <div class="col-md-6">
+            <h1 class="text-center text-white">Add a new piece for this Artist</h1>
+        </div>
+    </div>
+    <div class="row mt-1">
         <!-- Artwork Results -->
         <div class="col-md-6 resultsField">
             {{#each pieces}}
@@ -26,6 +35,7 @@
         </div>
         <!-- Form for updating -->
         <div class="col-md-6 formField">
+            {{!-- <h1 class="text-center text-white">Add a new pice for this Artist</h1> --}}
             <form id="artistAddContent" class="p-2">
                 <div class="form-row">
                     <div class="form-group col-md-6">

@@ -15,6 +15,8 @@ router.get("/artistContent/:id", function(req, res) {
         }]
     }).then(dbContent => {
 
+        console.log(dbContent);
+
         hbsObject = {
             pieces: dbContent,
             pageTitle: 'Artist Content',

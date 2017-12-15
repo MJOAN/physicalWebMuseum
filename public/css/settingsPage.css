@@ -20,3 +20,7 @@ a:hover,
 .delete-artist:hover {
   color: #fff;
 }
+
+input {
+	width: 90%;
+}

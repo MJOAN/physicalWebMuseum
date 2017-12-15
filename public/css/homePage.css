@@ -20,6 +20,11 @@ a:hover {
   color: #fff;
 }
 
+h1, p {
+  text-shadow: 2px 2px 2px #000;
+  line-height: 37px;
+}
+
 /* Custom default button */
 .btn-secondary,
 .btn-secondary:hover,
@@ -45,6 +50,11 @@ a:hover {
 .cover-container {
   margin-right: auto;
   margin-left: auto;
+}
+
+.opaque {
+  background: rgba(122, 133, 144, 0.3);
+  border-radius: 1rem;
 }
 
 /* Padding for spacing */

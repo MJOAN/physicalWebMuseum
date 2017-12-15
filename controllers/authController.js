@@ -14,7 +14,14 @@ router.post("/login", passport.authenticate('local',
     }));
 
 router.get("/login", function(req, res) {
-    res.render("login");
+
+    hbsObject = {
+        pageTitle: 'Login Page',
+        customCss: './css/homePage.css',
+        customJS: './javascript/login.js'
+    }
+
+    res.render("login", hbsObject);
     console.log("login")
 });
 
@@ -46,7 +53,14 @@ router.post("/signup", function(req, res, next) {
 
 router.get("/signup", function(req, res){
     console.log("signup")
-    res.render("signup");
+
+    hbsObject = {
+        pageTitle: 'Signup Page',
+        customCss: './css/loginSignupPage.css',
+        customJS: './javascript/signup.js'
+    }
+
+    res.render("signup", hbsObject);
 });
 
 router.get("/logout", function(req, res) {

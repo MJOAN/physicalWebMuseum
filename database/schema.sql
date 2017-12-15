@@ -21,3 +21,9 @@ CREATE TABLE artworks
     beaconID varchar(1000) NOT NULL,
     twitterData varchar(1000) NOT NULL
 );
+
+CREATE TABLE users
+(
+    email VARCHAR(1000) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);

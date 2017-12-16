@@ -106,7 +106,11 @@ Chrome for iOS supports the Physical Web as of July 2015. You can take the follo
 ## Code Higlights
 
 ### Authenticating users with Passport
--Mariam's story-
+Passport is a authentication middleware developed by Jared Hanson which we used in our Node.js web application. Looking through documentation you see there is basic template code you can use to get set up fairly easily. To begin you must configure passport middleware on your server file. You must require your npm packages: ‘passport’, ‘passport-local’, ‘express-session’. Then you must include built in methods such as, passport.initalize() and passport.session(). There is also an express.session() feature which will serve as your secret for authentication of the session. I learned this is optional but, recommended.
+
+Once middleware is set up, I moved onto what passport calls, “strategies”. This was the learning curve because reviewing forums with solutions you realize there are many ways to implement and configure these strategies. I ended up going with a basic passport local strategy, for example, the first line is: “passport.use(new LocalStrategy(“. Looking at this and seeing the “new” keyword leads me to think we are setting up a new class or some type of ‘new’ instance of a method. From there, you declare a function which checks username, password, and then a callback. There are then two templates to use for the last part of the strategy configuration and those are serializeUser and deserializeUser. These are the functions related to your users session after authentication. Serialize means that passport is storing your users ID in an request object [req.user] with key/values for a session which is based on the users login -- either email or username. Deserialize will then load any new user informaiton on each request which I learned uses the passport.session() method we have in our server file. Overall, I was able to get our emails and hashed passwords stored into the database in our User model.
+
+Looking at documentation I learned Passport works with OAuth which I know about from project 1 and will work with Facebook and Twitter. This will ultimately be my next challenge along with completing my debugging with the isAuthenticated function that only allows an authenticated user logged in to your site -- and finalizing compare hashed passwords logic.
 
 ```
 const express = require("express");

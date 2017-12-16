@@ -22,7 +22,7 @@ That's where Beacon Global comes in to play. Bringin the offline, online
 ## Instructions
 Give us a call and we will be more than happy to set you up with all kinds of beacon inspired products. From the aformentioned physical web museum project, to photo walls, to even dating sites on the go. The possibilities are endless with beacon technology and Beacon Global is just the comapy to help you reach your goals.
 
-Here you can have a look at the live demo we have [here](https://quiet-woodland-20976.herokuapp.com/)
+You can have a look at the live demo we have [here](https://quiet-woodland-20976.herokuapp.com/)
 
 Contact us for more info on pricing and plans.
 
